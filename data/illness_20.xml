@@ -1,0 +1,1 @@
+<illness name="cough"><age>62</age><date>2009-11-29T14:18:18.309-05:00</date><location type="zip" n="33">20190</location><symptom><type>runny nose</type><when start="2" duration="2"/><severity>3</severity></symptom><symptom><type>tired</type><when start="2" duration="4"/><severity/></symptom><overall-duration>7</overall-duration></illness>

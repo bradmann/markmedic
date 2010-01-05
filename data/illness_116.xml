@@ -1,0 +1,1 @@
+<illness name="swine flu"><age>72</age><date>2009-12-19T14:18:18.309-05:00</date><location type="zip" n="15">20911</location><symptom><type>sore throat</type><when start="1" duration="3"/><severity>3</severity></symptom><symptom><type>vomiting</type><when start="1" duration="1"/><severity>3</severity></symptom><overall-duration>6.33333333333333</overall-duration></illness>

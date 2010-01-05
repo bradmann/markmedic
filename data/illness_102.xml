@@ -1,0 +1,1 @@
+<illness name="swine flu"><age>43</age><date>2009-12-21T14:18:18.309-05:00</date><location type="zip" n="15">20911</location><symptom><type>vomiting</type><when start="1" duration="1"/><severity>5</severity></symptom><overall-duration>4.33333333333333</overall-duration></illness>

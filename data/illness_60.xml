@@ -1,0 +1,1 @@
+<illness name="swine flu"><age>10</age><date>2009-11-29T14:18:18.309-05:00</date><location type="zip" n="27">20194</location><symptom><type>aches</type><when start="2" duration="6"/><severity>2</severity></symptom><symptom><type>vomiting</type><when start="2" duration="1"/><severity>3</severity></symptom><overall-duration>6.33333333333333</overall-duration></illness>
