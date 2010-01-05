@@ -15,7 +15,7 @@ declare function geoc:geocode-url($address as xs:string) as xs:string {
 
 };
 
-declare function geoc:geocode-zip($zip as xs:string) as node() {
+declare function geoc:geocode-zip($zip as xs:string) as element(geo) {
 
     let $url := local:geocode-url($zip)
     let $kml := (xdmp:http-get($url))[2]
