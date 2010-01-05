@@ -17,7 +17,7 @@ declare function geoc:geocode-url($address as xs:string) as xs:string {
 
 declare function geoc:geocode-zip($zip as xs:string) as element(geo) {
 
-    let $url := local:geocode-url($zip)
+    let $url := geoc:geocode-url($zip)
     let $kml := (xdmp:http-get($url))[2]
     let $point-string := $kml/kml:kml/kml:Response/kml:Placemark/kml:Point/kml:coordinates/text()
     let $coords := fn:tokenize($point-string,",")
