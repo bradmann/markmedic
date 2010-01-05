@@ -1,1 +1,0 @@
-<illness name="cold"><age>67</age><date>2010-01-02T00:10:40.693-05:00</date><symptom><type>runny nose</type><when start="3" duration="4"/><severity>4</severity></symptom><symptom><type>tired</type><when start="1" duration="1"/><severity/></symptom><overall-duration>7</overall-duration></illness>

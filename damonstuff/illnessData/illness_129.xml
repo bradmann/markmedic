@@ -1,1 +1,0 @@
-<illness name="flu"><age>75</age><date>2009-12-04T00:10:40.693-05:00</date><symptom><type>vomiting</type><when start="2" duration="1"/><severity>5</severity></symptom><symptom><type>tired</type><when start="1" duration="4"/><severity/></symptom><overall-duration>3.33333333333333</overall-duration></illness>

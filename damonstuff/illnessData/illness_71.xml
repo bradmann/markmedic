@@ -1,1 +1,0 @@
-<illness name="flu"><age>13</age><date>2009-12-29T00:10:40.693-05:00</date><symptom><type>sore throat</type><when start="1" duration="3"/><severity>2</severity></symptom><symptom><type>aches</type><when start="3" duration="3"/><severity>2</severity></symptom><overall-duration>9.33333333333333</overall-duration></illness>
