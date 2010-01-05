@@ -9,10 +9,10 @@
     </names>
     
     <symptoms>
-        <symptom>sore throat</symptom>
+		<symptom>sore throat</symptom>
+		<symptom>vomiting</symptom>
+		<symptom>aches</symptom>
 		<symptom>tired</symptom>
-		<symptom>cough</symptom>
-		<symptom>runny nose</symptom>
     </symptoms>
 
 </illness>
