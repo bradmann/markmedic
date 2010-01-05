@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+    <biography>
+        <dob>1975-09-24</dob>
+        <first-name>John</first-name>
+        <last-name>Smith</last-name>
+        <address1>999 Skyway Road</address1>
+        <address2>Text</address2>
+        <city>San Carlos</city>
+        <state>CA</state>
+        <zip>94070</zip>
+        <geo><lat>-122.2471900</lat><long>37.5071980</long></geo>
+        <gender>Male</gender>
+        <ethnicity>White</ethnicity>
+    </biography>
+    
+    <medical>
+        <history>I am totally healthy all the time.</history>
+        <vaccinations>
+            <vaccination>
+                <vac-date>2009-10-21</vac-date>
+                <vac-targets>
+                    <vac-target>H1N1 Influenza</vac-target>
+                </vac-targets>
+            </vaccination>
+        </vaccinations>
+        <illness-reports>
+            <illness-report>
+                <illness-start-date>2009-12-11</illness-start-date>
+                <illness-end-date>2009-12-30</illness-end-date>
+                <illness-certainty>100</illness-certainty>
+                <illness-target>H1N1 Influenza</illness-target>
+                <illness-symptoms>
+                    <illness-symptom>vomiting</illness-symptom>
+                    <illness-symptom>aches</illness-symptom>
+                </illness-symptoms>
+            </illness-report>
+        </illness-reports>
+    </medical>
+</person>
