@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<illness>
+    <names>
+        <official-name>Cough</official-name>
+        <common-name>cough</common-name>
+    </names>
+    <symptoms>
+        <symptom>sore throat</symptom>
+		<symptom>tired</symptom>
+		<symptom>cough</symptom>
+		<symptom>runny nose</symptom>
+    </symptoms>
+    <treatments>
+        <treatment>rest</treatment>
+        <treatment>fluids</treatment>
+        <treatment>over the counter medicines</treatment>
+    </treatments>
+</illness>

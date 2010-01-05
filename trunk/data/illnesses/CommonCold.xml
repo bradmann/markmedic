@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<illness>
+    <names>
+        <official-name>Common Cold</official-name>
+        <common-name>cold</common-name>
+        <common-name>bad cold</common-name>
+    </names>
+    <symptoms>
+        <symptom>sore throat</symptom>
+		<symptom>tired</symptom>
+		<symptom>cough</symptom>
+		<symptom>runny nose</symptom>
+    </symptoms>
+    <treatments>
+        <treatment>rest</treatment>
+        <treatment>fluids</treatment>
+        <treatment>over the counter medicines</treatment>
+    </treatments>
+</illness>
