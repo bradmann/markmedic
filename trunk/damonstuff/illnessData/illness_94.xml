@@ -1,0 +1,1 @@
+<illness name="h1n1"><age>55</age><date>2010-01-02T00:10:40.693-05:00</date><symptom><type>vomiting</type><when start="1" duration="1"/><severity>3</severity></symptom><symptom><type>tired</type><when start="1" duration="8"/><severity/></symptom><overall-duration>6.33333333333333</overall-duration></illness>

@@ -1,0 +1,1 @@
+<illness name="bad cold"><age>84</age><date>2009-12-17T00:10:40.693-05:00</date><symptom><type>sore throat</type><when start="4" duration="2"/><severity>3</severity></symptom><symptom><type>tired</type><when start="1" duration="5"/><severity/></symptom><overall-duration>6</overall-duration></illness>
