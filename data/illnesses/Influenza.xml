@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<illness>
+    <names>
+        <official-name>Influenza</official-name>
+        <common-name>flu</common-name>
+        <common-name>influenza</common-name>
+    </names>
+    <symptoms>
+        <symptom>sore throat</symptom>
+		<symptom>tired</symptom>
+		<symptom>cough</symptom>
+		<symptom>runny nose</symptom>
+    </symptoms>
+</illness>
