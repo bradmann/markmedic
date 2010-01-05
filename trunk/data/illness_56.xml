@@ -1,0 +1,1 @@
+<illness name="flu"><age>7</age><date>2009-12-29T14:18:18.309-05:00</date><location type="zip" n="88">20193</location><symptom><type>aches</type><when start="3" duration="2"/><severity>2</severity></symptom><symptom><type>tired</type><when start="2" duration="5"/><severity/></symptom><overall-duration>4.33333333333333</overall-duration></illness>
