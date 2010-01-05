@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<illness>
+    <names>
+        <official-name>Swine flu</official-name>
+        <common-name>HINI</common-name>
+    </names>
+    <symptoms>
+        <symptom>Text</symptom>
+        <symptom>Text</symptom>
+        <symptom>Text</symptom>
+    </symptoms>
+    <treatments>
+        <treatment>Text</treatment>
+        <treatment>Text</treatment>
+    </treatments>
+    <causes>
+        <cause>Text</cause>
+        <cause>Text</cause>
+    </causes>
+</illness>
