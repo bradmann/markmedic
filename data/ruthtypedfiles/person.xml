@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+    <biography>
+        <dob>date</dob>
+        <first-name>Text</first-name>
+        <last-name>Text</last-name>
+        <address1>Text</address1>
+        <address2>Text</address2>
+        <city>Text</city>
+        <state>Text</state>
+        <zip>Text</zip>
+        <geo>
+            <lat></lat>
+            <long></long>
+        </geo>
+        <gender>Text</gender>
+        <ethnicity>Text</ethnicity>
+    </biography>
+    
+    <medical>
+        <history>Free Text</history>
+        <vaccinations>
+            <vaccination>
+                <vac-date>Date</vac-date>
+                <vac-targets>
+                    <vac-target>Illness reference text</vac-target>
+                </vac-targets>
+            </vaccination>
+        </vaccinations>
+        <illness-reports>
+            <illness-report>
+                <illness-start-date>Date</illness-start-date>
+                <illness-end-date>Date</illness-end-date>
+                <illness-certainty>1 to 100</illness-certainty>
+                <illness-target>Reference</illness-target>
+                <illness-symptoms>
+                    <illness-symptom>Text</illness-symptom>
+                    <illness-symptom>Text</illness-symptom>
+                </illness-symptoms>
+            </illness-report>
+        </illness-reports>
+    </medical>
+</person>
