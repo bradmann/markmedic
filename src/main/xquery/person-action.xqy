@@ -1,7 +1,7 @@
 xquery version "1.0-ml";
 
-declare function local:do-get($data as element()) as element() {
-    $data
+declare function local:do-get($uri as xs:string) as element() {
+    <data>{fn:doc($uri)/node()}</data>
 };
 
 declare function local:do-post($data as element()) as element() {
@@ -19,7 +19,7 @@ let $method := xdmp:get-request-method()
 let $request-body := xdmp:get-request-body()/data/person
 return 
 if ($method eq "GET") then
-    local:do-get($request-body)
+    local:do-get($uri)
 else if ($method eq "POST") then
     local:do-post($request-body)
 else if ($method eq "PUT") then

@@ -19,19 +19,17 @@ return
 <?xml-stylesheet href="resources/xsltforms/xsltforms.xsl"
 type="text/xsl"?>,
 <!--?xsltforms-options debug="yes"?-->,
+<?css-conversion no?>,
 <html 
 xmlns:xf="http://www.w3.org/2002/xforms"
-xmlns:ev="http://www.w3.org/2001/xml-events">
+xmlns:ev="http://www.w3.org/2001/xml-events"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <head>
     <title>Person Detail</title>
+    <link rel="stylesheet" type="text/css" href="/resources/css/global.css"/>
+    
     <xf:model>
-      <xf:instance>
-        <data xmlns="">
-          {
-          doc($uri)
-          }
-        </data>
-      </xf:instance>
+      <xf:instance id="builder" src="person-action.xqy?uri={$uri}" />
       <xf:bind nodeset="person/biography/dob" type="xsd:date"/>
       <xf:bind nodeset="person/medical/vaccinations/vaccination/vac-date" type="xsd:date"/>
       <xf:bind nodeset="person/medical/illness-reports/illness-report/illness-start-date" type="xsd:date"/>
@@ -111,9 +109,9 @@ xmlns:ev="http://www.w3.org/2001/xml-events">
                     <xf:label>Symptoms:</xf:label>
                     <xf:repeat nodeset="illness-symptoms/illness-symptom" id="illsym-rpt">
                         <xf:input ref="." incremental="true" />
-                        <xf:trigger>
-                              <xf:label>x</xf:label>
-                              <xf:delete ev:event="DOMActivate" nodeset="." at="index('illsym-rpt')" />
+                        <xf:trigger appearance="minimal">
+                              <xf:label><img height="15" src="http://www.psdgraphics.com/wp-content/uploads/2009/03/psd-delete-icon.jpg"/></xf:label>
+                              <xf:delete ev:event="DOMActivate" nodeset="." />
                          </xf:trigger>  
                     </xf:repeat>
                     <xf:trigger>
