@@ -6,7 +6,7 @@ declare namespace xf = "http://www.w3.org/2002/xforms";
 declare namespace ev = "http://www.w3.org/2001/xml-events";
 declare namespace xs = "http://www.w3.org/2001/XMLSchema";
 
-let $SET := xdmp:set-response-content-type("application/xml")
+let $_ := xdmp:set-response-content-type("application/xml")
 let $uri := xdmp:get-request-field('uri')
 let $model :=
     <xf:model>
