@@ -2,34 +2,20 @@ xquery version "1.0-ml";
 
 import module namespace tmpl="http://marklogic.com/markmedic/template" at "/modules/template.xqy";
 
+declare namespace xf = "http://www.w3.org/2002/xforms";
+declare namespace ev = "http://www.w3.org/2001/xml-events";
+declare namespace xs = "http://www.w3.org/2001/XMLSchema";
+
 let $SET := xdmp:set-response-content-type("application/xml")
 let $uri := xdmp:get-request-field('uri')
-
-return 
-(
-<?xml-stylesheet href="resources/xsltforms/xsltforms.xsl"
-type="text/xsl"?>,
-<!--?xsltforms-options debug="yes"?-->,
-<?css-conversion no?>,
-<html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:xf="http://www.w3.org/2002/xforms"
-xmlns:ev="http://www.w3.org/2001/xml-events"
->
-  <head>
-    <title>Illness Detail</title>
-    <link rel="stylesheet" type="text/css" href="/resources/css/markmedic.css"/>
+let $model :=
     <xf:model>
-      <xf:instance id="builder" src="illness-action.xqy?uri={$uri}" />
-      <xf:submission id="save-form" method="put" action="illness-action.xqy?uri={$uri}"/>
-      <xf:submission id="cancel-form" method="get" action="/"/>
+        <xf:instance id="builder" src="illness-action.xqy?uri={$uri}" />
+        <xf:submission id="save-form" method="put" action="illness-action.xqy?uri={$uri}"/>
+        <xf:submission id="cancel-form" method="get" action="/"/>
     </xf:model>
-  </head>
-  <body>
-  
-  <div id="wrapper">
-  <div id="header"><a href="/"><img src="resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></a></div>
-  <div id="leftcol">
-  
+let $content :=
+    <span>
      <xf:input ref="illness/names/official-name" incremental="true">
        <xf:label>Illness Name:</xf:label>
      </xf:input>
@@ -81,17 +67,5 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
      <xf:submit submission="save-form">
         <xf:label>Save</xf:label>
      </xf:submit>
-     
-     
-       </div>
-  <div id="rightcol">
-  
-
-  </div>
-  
-  <div id="footer"> </div>
-</div>
-     
-  </body>
-</html>
-)
+    </span>
+return tmpl:render($model, $content, ())
