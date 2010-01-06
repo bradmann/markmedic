@@ -4,15 +4,14 @@
         <official-name>Cough</official-name>
         <common-name>cough</common-name>
     </names>
+    <description>A cough, in medicine, is a sudden and often repetitively occurring defense reflex which helps to clear the large breathing passages from excess secretions, irritants, foreign particles and microbes. The cough reflex consists of three phases: an inhalation, a forced exhalation against a closed glottis, and a violent release of air from the lungs following opening of the glottis, usually accompanied by a distinctive sound.[1] Coughing can happen voluntarily as well as involuntarily, though for the most part it is involuntarily.
+
+Frequent or severe coughing usually indicates the presence of a disease.   
+    </description>
     <symptoms>
-        <symptom>sore throat</symptom>
-		<symptom>tired</symptom>
 		<symptom>cough</symptom>
-		<symptom>runny nose</symptom>
     </symptoms>
     <treatments>
-        <treatment>rest</treatment>
-        <treatment>fluids</treatment>
         <treatment>over the counter medicines</treatment>
     </treatments>
 </illness>

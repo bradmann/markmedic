@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<illness>
+    <names>
+        <official-name>Bronchitis</official-name>
+        <common-name>bronchitis</common-name>
+    </names>
+    <description>Bronchitis is inflammation of the mucous membranes of the bronchi, the airways that carry airflow from the trachea into the lungs. Bronchitis can be classified into two categories, acute and chronic, each of which has unique etiologies, pathologies, and therapies.  
+    </description>
+    <symptoms>
+        <symptom>cough</symptom>
+		<symptom>mucus</symptom>
+		<symptom>shortness of breath</symptom>
+		<symptom>wheezing</symptom>
+		<symptom>fatigue</symptom>
+		<symptom>slight fever and chills</symptom>
+		<symptom>chest discomfort</symptom>
+    </symptoms>
+    <treatments>
+        <treatment>rest</treatment>
+        <treatment>drinking fluids</treatment>
+        <treatment>breathing in warm, moist air</treatment>
+        <treatment>OTC cough suppressant</treatment>
+    </treatments>
+</illness>
