@@ -24,7 +24,8 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
           }
         </data>
       </xf:instance>
-      <xf:submission id="form1" method="put" action="illness-action.xqy?uri={$uri}"/>
+      <xf:submission id="save-form" method="put" action="illness-action.xqy?uri={$uri}"/>
+      <xf:submission id="cancel-form" method="get" action="/"/>
     </xf:model>
   </head>
   <body>
@@ -77,7 +78,11 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
        <xf:insert nodeset="illness/causes/cause" position="after" at="count(illness/causes/cause)" ev:event="DOMActivate"/>
      </xf:trigger>
      
-     <xf:submit submission="form1">
+     <hr/>
+     <xf:submit submission="cancel-form">
+        <xf:label>Cancel</xf:label>
+     </xf:submit>
+     <xf:submit submission="save-form">
         <xf:label>Save</xf:label>
      </xf:submit>
      
