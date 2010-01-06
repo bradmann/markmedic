@@ -68,3 +68,7 @@ label, .xforms-group-label {
 button span {
 	font-size: 9px;
 }
+
+a img {
+	border-style: none;
+}
