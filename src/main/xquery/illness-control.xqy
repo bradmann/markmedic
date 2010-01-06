@@ -1,4 +1,5 @@
 xquery version "1.0-ml";
+
 let $SET := xdmp:set-response-content-type("application/xml")
 let $uri := xdmp:get-request-field('uri')
 
@@ -27,6 +28,11 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
     </xf:model>
   </head>
   <body>
+  
+  <div id="wrapper">
+  <div id="header"><img src="resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></div>
+  <div id="leftcol">
+  
      <xf:input ref="illness/names/official-name" incremental="true">
        <xf:label>Illness Name:</xf:label>
      </xf:input>
@@ -77,6 +83,17 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
      <xf:submit submission="form1">
         <xf:label>Save</xf:label>
      </xf:submit>
+     
+     
+       </div>
+  <div id="rightcol">
+  
+
+  </div>
+  
+  <div id="footer"> </div>
+</div>
+     
   </body>
 </html>
 )

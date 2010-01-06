@@ -84,7 +84,7 @@ return
         {
             illview:searchIllness($illness-search-string)
         }
-        <a href="/illness.xqy?uri=/illnesses/CommonCold.xml">Edit link for illness</a>
+        <a href="/illness-control.xqy?uri=/illnesses/CommonCold.xml">Edit link for illness</a>
         
      </div>
   </div>
