@@ -7,12 +7,14 @@ return
 <?xml-stylesheet href="resources/xsltforms/xsltforms.xsl"
 type="text/xsl"?>,
 <!--?xsltforms-options debug="yes"?-->,
+<?css-conversion no?>,
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:xf="http://www.w3.org/2002/xforms"
 xmlns:ev="http://www.w3.org/2001/xml-events"
 >
   <head>
     <title>Illness Detail</title>
+    <link rel="stylesheet" type="text/css" href="/resources/css/markmedic.css"/>
     <xf:model>
       <xf:instance>
         <data xmlns="">
