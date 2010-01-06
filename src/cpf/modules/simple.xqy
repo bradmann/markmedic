@@ -17,7 +17,7 @@ declare variable $doc as node() := fn:doc($cpf:document-uri);
 
 
 declare function this:process () as empty-sequence () {
-    xdmp:document-insert(cvt:basename($cpf:document-uri), person:make-person($doc))
+    xdmp:document-insert(fn:concat("/output/", cvt:basename($cpf:document-uri)), person:make-person($doc))
 };
 
 if (cpf:check-transition($cpf:document-uri, $cpf:transition)) then 
