@@ -1,11 +1,11 @@
+xquery version "1.0-ml";
 module namespace person = "http://marklogic.com/person";
 
 declare function person:make-person($illnessDoc as node()) as node()
 {
 <person>
-<biography>
-</biography>
-{person:get-medical($illnessDoc)}
+	<biography/>	
+	{person:get-medical($illnessDoc)}
 </person>
 };
 
