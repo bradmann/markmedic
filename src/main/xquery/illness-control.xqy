@@ -1,5 +1,7 @@
 xquery version "1.0-ml";
 
+import module namespace tmpl="http://marklogic.com/markmedic/template" at "/modules/template.xqy";
+
 let $SET := xdmp:set-response-content-type("application/xml")
 let $uri := xdmp:get-request-field('uri')
 
@@ -17,13 +19,7 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
     <title>Illness Detail</title>
     <link rel="stylesheet" type="text/css" href="/resources/css/markmedic.css"/>
     <xf:model>
-      <xf:instance>
-        <data xmlns="">
-          {
-          doc($uri)
-          }
-        </data>
-      </xf:instance>
+      <xf:instance id="builder" src="illness-action.xqy?uri={$uri}" />
       <xf:submission id="save-form" method="put" action="illness-action.xqy?uri={$uri}"/>
       <xf:submission id="cancel-form" method="get" action="/"/>
     </xf:model>
