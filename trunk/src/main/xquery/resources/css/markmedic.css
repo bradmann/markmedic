@@ -46,6 +46,25 @@ body {
 	padding-left: 15px;
 }
 
-label {
-	background-color: gray;
+span label {
+	clear: both;
+	display: block;
+}
+
+label, .xforms-group-label {
+	margin-top: 10px;
+	font-weight: bold;
+	clear: right;
+	display: block;
+	padding: 5px;
+}
+
+.xforms-repeat-item {
+	margin: 5px;
+	clear: both;
+	display: block;
+}
+
+button span {
+	font-size: 9px;
 }
