@@ -11,7 +11,7 @@ declare function local:get-search-result-points() {(
         let $name := $person/biography/first-name/text()
         let $position := fn:concat($person//geo/lat/text(), "," , $person//geo/long/text()) 
         return
-            fn:concat("['", fn:encode-for-uri($name) ,"', ",$position,", ",$i,"]") ,
+            fn:concat("['", fn:encode-for-uri($name) ,"', ",$position,", ",$i, ", '",$uri,"'"  , "]") ,
         ","),
     
     "];")
@@ -36,7 +36,7 @@ declare function local:manageRequestFields() as element(field)* {
     return 
         element field {
             element name { $name },
-            element value { xdmp:get-request-field($name) }
+            element value { xdmp:get-request-field($name,"") }
         }
     
 
@@ -49,6 +49,8 @@ let $illness-search-string :=
         $illness-search-field/value/text()
     else
         ""
+let $log := xdmp:log(fn:concat("Controller: term is : '",$illness-search-string,"'"))
+let $log := xdmp:log(xdmp:describe($illness-search-string))
         
 
 return
@@ -73,23 +75,22 @@ return
     <form id="form1" name="form1" method="post" action="index.xqy">
       <p>
         <input name="illness-search-term" type="text" id="illness-search-term" size="40" value="{$illness-search-string}"/>
-        
         <input type="submit" name="Submit" id="Submit" value="Search" />
       </p>
     
     </form>
     
      <div id="resultpanel">
-
-{
-        illview:searchIllness($illness-search-string)
-}
-
+        {
+            illview:searchIllness($illness-search-string)
+        }
+        <a href="/illness.xqy?uri=/illnesses/CommonCold.xml">Edit link for illness</a>
+        
      </div>
   </div>
   <div id="rightcol">
   
-  <div id="map_canvas" style="width:570px; height:400px"></div>
+  <div id="map_canvas" style="width:540px; height:400px"></div>
   </div>
   
   <div id="footer"> </div>
