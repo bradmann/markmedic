@@ -4,8 +4,11 @@
         <official-name>Asthma</official-name>
         <common-name>asthma</common-name>
     </names>
-    <description>Asthma is characterized by a predisposition to chronic inflammation of the lungs in which the airways (bronchi) are reversibly narrowed. 
-    During asthma attacks (exacerbations of asthma), the smooth muscle cells in the bronchi constrict, the airways become inflamed and swollen, and breathing becomes difficult.</description>
+    <description>Asthma is characterized by a predisposition to chronic inflammation of the lungs in which 
+    the airways (bronchi) are reversibly narrowed. 
+    During asthma attacks (exacerbations of asthma), the smooth muscle cells in the bronchi constrict, 
+    the airways become inflamed and swollen, and breathing becomes difficult.
+    </description>
     <symptoms>
         <symptom>shortness of breath</symptom>
 		<symptom>chest tightness or pain</symptom>

@@ -9,7 +9,9 @@
         <common-name>H1N1 flu</common-name>
         <common-name>H1N1 influenza</common-name>
     </names>
-    <description>Influenza A (H1N1) virus is a subtype of influenza A virus and the most common cause of influenza (flu) in humans. 
+    <description>Influenza A (H1N1) virus is a subtype of influenza A virus and the most common 
+    cause of influenza (flu) in humans. Swine flu is one of the many type A influenza viruses. 
+    
     </description>
     <symptoms>
 		<symptom>fever</symptom>

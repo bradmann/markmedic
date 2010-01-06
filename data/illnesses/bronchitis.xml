@@ -4,7 +4,9 @@
         <official-name>Bronchitis</official-name>
         <common-name>bronchitis</common-name>
     </names>
-    <description>Bronchitis is inflammation of the mucous membranes of the bronchi, the airways that carry airflow from the trachea into the lungs. Bronchitis can be classified into two categories, acute and chronic, each of which has unique etiologies, pathologies, and therapies.  
+    <description>Bronchitis is inflammation of the mucous membranes of the bronchi, the airways 
+    that carry airflow from the trachea into the lungs. Bronchitis can be classified into two 
+    categories, acute and chronic, each of which has unique etiologies, pathologies, and therapies.  
     </description>
     <symptoms>
         <symptom>cough</symptom>
