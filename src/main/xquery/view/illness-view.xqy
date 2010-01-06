@@ -13,9 +13,24 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
     
     for $ill in $illnesses 
     return
-    element div {
-       $ill/names/official-name/text()
-    }
+
+<div>
+    <p>
+    <b>{$ill/names/official-name/text()}</b> ( )
+    </p>
+    <p>
+    {$ill/description/text()}
+    </p>
+    <p>
+    Symptoms: {$ill/symptoms/symptom/text()}
+    <br/>
+    Treatments: {$ill/treatments/treatment/text()}
+    <br/>
+    Other names: {$ill/names/common-name/text()}
+    </p>
+    <p>[<a href="">Edit</a>]</p>
+</div> 
+
 
 };
 
