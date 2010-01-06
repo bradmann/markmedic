@@ -36,12 +36,12 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
          <xf:input ref="." />
          <xf:trigger>
               <xf:label>x</xf:label>
-              <xf:delete ev:event="DOMActivate" nodeset="." at="index('symptom-rpt')" />
+              <xf:delete ev:event="DOMActivate" nodeset="." />
          </xf:trigger>         
      </xf:repeat>
      <xf:trigger>
        <xf:label>Add Symptom</xf:label>
-       <xf:insert nodeset="illness/symptoms/symptom" position="before" at="count(illness/symptoms/symptom)" ev:event="DOMActivate"/>
+       <xf:insert nodeset="illness/symptoms/symptom" position="after" at="count(illness/symptoms/symptom)" ev:event="DOMActivate"/>
      </xf:trigger>
      <br />
      <xf:label>Treatments:</xf:label>
@@ -49,12 +49,12 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
          <xf:input ref="." /> 
          <xf:trigger>
               <xf:label>x</xf:label>
-              <xf:delete ev:event="DOMActivate" nodeset="." at="index('treatment-rpt')" />
+              <xf:delete ev:event="DOMActivate" nodeset="." />
          </xf:trigger>         
      </xf:repeat>
      <xf:trigger>
        <xf:label>Add Treatment</xf:label>
-       <xf:insert nodeset="illness/treatments/treatment" position="before" at="count(illness/treatments/treatment)" ev:event="DOMActivate"/>
+       <xf:insert nodeset="illness/treatments/treatment" position="after" at="count(illness/treatments/treatment)" ev:event="DOMActivate"/>
      </xf:trigger>
      <br />
      <xf:label>Causes:</xf:label>
@@ -62,12 +62,12 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
          <xf:input ref="." />
          <xf:trigger>
               <xf:label>x</xf:label>
-              <xf:delete ev:event="DOMActivate" nodeset="." at="index('cause-rpt')" />
+              <xf:delete ev:event="DOMActivate" nodeset="." />
          </xf:trigger>   
      </xf:repeat>
      <xf:trigger>
        <xf:label>Add Cause</xf:label>
-       <xf:insert nodeset="illness/causes/cause" position="before" at="count(illness/causes/cause)" ev:event="DOMActivate"/>
+       <xf:insert nodeset="illness/causes/cause" position="after" at="count(illness/causes/cause)" ev:event="DOMActivate"/>
      </xf:trigger>
      <br/>
      <xf:output ref="illness/names/official-name">
