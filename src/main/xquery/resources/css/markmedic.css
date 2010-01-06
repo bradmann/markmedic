@@ -13,9 +13,15 @@
 }
 #rightcol {
 	float: right;
-	width: 570px;
+	width: 540px;
 	padding-top: 30px;
+	padding-right: 30px;
 }
+
+#leftcol a {
+	color:green;
+}
+
 #footer {
 	clear: both;
 }
