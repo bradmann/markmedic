@@ -42,13 +42,19 @@ declare function local:manageRequestFields() as element(field)* {
 
 };
 
+declare function local:valueFromField($field as element(field)?) as xs:string {
+   
+        if($field) then
+            fn:concat($field/value/text(),"")
+        else
+            ""
+
+};
+
 let $fields := local:manageRequestFields()
-let $illness-search-field := $fields[name = 'illness-search-term']
-let $illness-search-string := 
-    if($illness-search-field) then
-        $illness-search-field/value/text()
-    else
-        ""
+let $log := xdmp:log($fields)
+let $illness-search-string := local:valueFromField($fields[name = 'illness-search-term'])
+
 let $log := xdmp:log(fn:concat("Controller: term is : '",$illness-search-string,"'"))
 let $log := xdmp:log(xdmp:describe($illness-search-string))
         

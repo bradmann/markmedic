@@ -2,8 +2,8 @@ module namespace illmod = 'http://www.example.com/illness-model';
 
 declare function illmod:search-illness($searchString as xs:string?) as element(illness)* {
 
-    (: let $log := xdmp:log(fn:concat("Model: term is : '",$searchString,"'")) :)
-    
+     let $log := xdmp:log(fn:concat("Model: term is : '",$searchString,"'")) 
+    return
     
     if(fn:string-length(fn:normalize-space($searchString)) > 0) then
 
