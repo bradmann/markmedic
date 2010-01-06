@@ -36,20 +36,21 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
      <xf:input ref="illness/names/official-name" incremental="true">
        <xf:label>Illness Name:</xf:label>
      </xf:input>
-     <br />
+     
+     <xf:group>
      <xf:label>Symptoms:</xf:label>
-     <xf:repeat nodeset="illness/symptoms/symptom" id="symptom-rpt">
-         <xf:input ref="." />
+         <xf:repeat nodeset="illness/symptoms/symptom" id="symptom-rpt">
+             <xf:input ref="." />
+             <xf:trigger>
+                  <xf:label>x</xf:label>
+                  <xf:delete ev:event="DOMActivate" nodeset="." />
+             </xf:trigger>         
+         </xf:repeat>
          <xf:trigger>
-              <xf:label>x</xf:label>
-              <xf:delete ev:event="DOMActivate" nodeset="." />
-         </xf:trigger>         
-     </xf:repeat>
-     <xf:trigger>
-       <xf:label>Add Symptom</xf:label>
-       <xf:insert nodeset="illness/symptoms/symptom" position="after" at="count(illness/symptoms/symptom)" ev:event="DOMActivate"/>
-     </xf:trigger>
-     <br />
+           <xf:label>Add Symptom</xf:label>
+           <xf:insert nodeset="illness/symptoms/symptom" position="after" at="count(illness/symptoms/symptom)" ev:event="DOMActivate"/>
+         </xf:trigger>
+     </xf:group>
      <xf:label>Treatments:</xf:label>
      <xf:repeat nodeset="illness/treatments/treatment" id="treatment-rpt">
          <xf:input ref="." /> 
@@ -62,7 +63,7 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
        <xf:label>Add Treatment</xf:label>
        <xf:insert nodeset="illness/treatments/treatment" position="after" at="count(illness/treatments/treatment)" ev:event="DOMActivate"/>
      </xf:trigger>
-     <br />
+     
      <xf:label>Causes:</xf:label>
      <xf:repeat nodeset="illness/causes/cause" id="cause-rpt">
          <xf:input ref="." />
@@ -75,11 +76,7 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
        <xf:label>Add Cause</xf:label>
        <xf:insert nodeset="illness/causes/cause" position="after" at="count(illness/causes/cause)" ev:event="DOMActivate"/>
      </xf:trigger>
-     <br/>
-     <xf:output ref="illness/names/official-name">
-       <xf:label>Output: </xf:label>
-     </xf:output>
-     <br />
+     
      <xf:submit submission="form1">
         <xf:label>Save</xf:label>
      </xf:submit>
