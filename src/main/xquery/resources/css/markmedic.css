@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+
+#header {
+}
+#leftcol {
+	float: left;
+	width: 340px;
+	padding-top: 20px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+	padding-left: 30px;
+}
+#rightcol {
+	float: right;
+	width: 570px;
+	padding-top: 30px;
+}
+#footer {
+	clear: both;
+}
+#wrapper {
+	width: 970px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #FFF;
+}
+body {
+	background-color: #C8C8C8;
+	padding-top: 50px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+#resultpanel {
+	background-color: #7D1921;
+	color: #FFF;
+	padding-top: 0px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+}
