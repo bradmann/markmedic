@@ -30,7 +30,7 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
   <body>
   
   <div id="wrapper">
-  <div id="header"><img src="resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></div>
+  <div id="header"><a href="/"><img src="resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></a></div>
   <div id="leftcol">
   
      <xf:input ref="illness/names/official-name" incremental="true">
