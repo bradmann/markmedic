@@ -26,7 +26,7 @@ xmlns:ev="http://www.w3.org/2001/xml-events"
 xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <head>
     <title>Person Detail</title>
-    <link rel="stylesheet" type="text/css" href="/resources/css/global.css"/>
+    <link rel="stylesheet" type="text/css" href="/resources/css/markmedic.css"/>
     
     <xf:model>
       <xf:instance id="builder" src="person-action.xqy?uri={$uri}" />
@@ -121,7 +121,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
                 </xf:group>
                 <xf:trigger>
                       <xf:label>x</xf:label>
-                      <xf:delete ev:event="DOMActivate" nodeset="." at="index('illrpt-rpt')" />
+                      <xf:delete ev:event="DOMActivate" nodeset="." />
                  </xf:trigger>
                </xf:repeat>
                <xf:trigger>
