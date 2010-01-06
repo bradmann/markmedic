@@ -5,6 +5,12 @@
         <common-name>cold</common-name>
         <common-name>bad cold</common-name>
     </names>
+    <description>The common cold (viral upper respiratory tract infection (VURI), 
+    acute viral nasopharyngitis, acute viral rhinopharyngitis, acute coryza, or a cold) 
+    is a contagious, viral infectious disease of the upper respiratory system, primarily 
+    caused by rhinoviruses, (picornaviruses) or coronaviruses. It is the most common 
+    infectious disease in humans;[1] there is no known cure, but it is very rarely fatal.  
+    </description>
     <symptoms>
         <symptom>sore throat</symptom>
 		<symptom>tired</symptom>

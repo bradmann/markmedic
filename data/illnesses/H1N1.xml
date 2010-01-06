@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <illness>
     <names>
-        <official-name>H1N1 Influenza</official-name>
+        <official-name>Influenza A virus subtype H1N1</official-name>
         <common-name>H1N1</common-name>
         <common-name>swine flu</common-name>
         <common-name>h1n1</common-name>
         <common-name>H1 N1</common-name>
+        <common-name>H1N1 flu</common-name>
+        <common-name>H1N1 influenza</common-name>
     </names>
-    
+    <description>Influenza A (H1N1) virus is a subtype of influenza A virus and the most common cause of influenza (flu) in humans. 
+    </description>
     <symptoms>
+		<symptom>fever</symptom>
+		<symptom>cough</symptom>
 		<symptom>sore throat</symptom>
+		<symptom>body aches</symptom>
+		<symptom>headaches</symptom>
+		<symptom>chills</symptom>
+		<symptom>fatigue</symptom>
+		<symptom>diarrhea</symptom>
 		<symptom>vomiting</symptom>
-		<symptom>aches</symptom>
-		<symptom>tired</symptom>
     </symptoms>
-
+    <treatments>
+        <treatment>symptom relief</treatment>
+        <treatment>medication to decrease inflammation</treatment>
+        <treatment>Tamiflu</treatment>
+        <treatment>Relenza</treatment>
+    </treatments>
 </illness>

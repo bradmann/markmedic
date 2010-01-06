@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<illness>
+    <names>
+        <official-name>Asthma</official-name>
+        <common-name>asthma</common-name>
+    </names>
+    <description>Asthma is characterized by a predisposition to chronic inflammation of the lungs in which the airways (bronchi) are reversibly narrowed. 
+    During asthma attacks (exacerbations of asthma), the smooth muscle cells in the bronchi constrict, the airways become inflamed and swollen, and breathing becomes difficult.</description>
+    <symptoms>
+        <symptom>shortness of breath</symptom>
+		<symptom>chest tightness or pain</symptom>
+		<symptom>coughing</symptom>
+		<symptom>wheezing</symptom>
+		<symptom>whistling sound</symptom>
+		<symptom>wheezing</symptom>
+    </symptoms>
+    <treatments>
+        <treatment>inhaled corticosteroids</treatment>
+        <treatment>long-acting beta-2 agonists (LABAs)</treatment>
+        <treatment>leukotriene modifiers</treatment>
+        <treatment>cromolyn and nedocromil (Tilade)</treatment>
+       <treatment>theophylline</treatment>
+    </treatments>
+</illness>
