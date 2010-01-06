@@ -3,6 +3,16 @@ module namespace illview = 'http://www.example.com/illness-view';
 import module namespace illmod = 'http://www.example.com/illness-model' at "/model/illness-model.xqy";
 
 
+declare function illview:search-link($items as xs:string* , $oldText as xs:string)  {
+
+for $newText at $x in $items
+let $link := fn:concat( fn:encode-for-uri( $oldText)," ",fn:encode-for-uri($newText))
+let $a := <a href="/index.xqy?illness-search-term={$link}">{$newText}</a>
+return 
+    if ($x = fn:count($items)) then $a else ($a, ", ")
+};
+
+
 declare function illview:searchIllness($searchString as xs:string?) as element(div)*{
 
     (: let $log := xdmp:log(fn:concat("View: the search string is '",$searchString,"'")) :)
@@ -22,10 +32,10 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
     {$ill/description/text()}
     </p>
     <p>
-    Symptoms: {fn:string-join($ill/symptoms/symptom/text(),", ")}
+    Symptoms: { illview:search-link($ill/symptoms/symptom/text(),$searchString) }
     </p>
     <p>
-    Treatments: {fn:string-join($ill/treatments/treatment/text(),", ")}
+    Treatments: {illview:search-link($ill/treatments/treatment/text(),$searchString)}
     </p>
     <p>
     Other names: {fn:string-join($ill/names/common-name/text(),", ")}
