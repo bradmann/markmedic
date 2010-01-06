@@ -8,9 +8,13 @@ declare function local:do-post($data as element()) as element() {
     $data
 };
 
-declare function local:do-put($uri as xs:string, $data as element()) as element() {
+declare function local:do-put($uri as xs:string, $data as element())  {
     let $ACT := xdmp:document-insert($uri, $data)
-    return <div>Saved!</div>
+    return
+    
+    xdmp:redirect-response("/index.xqy")
+
+    
 };
 
 let $uri := xdmp:get-request-field("uri")
