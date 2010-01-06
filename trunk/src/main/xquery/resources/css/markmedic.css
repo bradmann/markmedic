@@ -81,3 +81,11 @@ a img {
 hr {
 	margin: 15px 0 15px 0;
 }
+
+.xforms-group .xforms-group {
+	margin-left: 70px;
+}
+
+input {
+	border: solid 1px black;
+}
