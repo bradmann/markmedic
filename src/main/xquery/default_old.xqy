@@ -36,7 +36,27 @@ declare function local:mapScripts() as node()* {
     </head>
     <body onload="initialize()">
         
-        <div id="map_canvas" style="width:700px; height:400px"></div>
+        <div style="width=100%; height=100%">
+            <div id="headarea" style="background-color:red">Header</div>
+            <div id="bodyarea" style="background-color:blue">
+                <div id="left-panel" style="float:left; background-color:white">
+                    Search Illnesses: <input></input>
+                    <button type="submit">Submit</button>
+                    <br/>
+                    <div>
+                    <a href="#">Result</a> result result <br/>
+                    <a href="#">Result</a> result result <br/>
+                    <a href="#">Result</a> result result <br/>
+                    <a href="#">Result</a> result result <br/>
+                    <a href="#">Result</a> result result <br/>
+                    
+                    </div>
+                </div>
+                <div id="map_canvas" style="float:right; width:570px; height:400px"></div>
+                <br style="clear:both"/>
+            </div>
+            <div id="footarea" style="background-color:red">Footer</div>
+        </div>
             
     </body>
 </html>
