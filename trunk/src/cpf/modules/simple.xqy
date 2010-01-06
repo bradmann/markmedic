@@ -2,6 +2,10 @@ xquery version "1.0-ml";
 
 import module namespace cpf = "http://marklogic.com/cpf" at "/MarkLogic/cpf/cpf.xqy";
 
+(:import module namespace person = "http://marklogic.com/person" at "/MarkLogic/markmedic/person.xqy";:)
+
+declare namespace this = "http://markmedic/processing";
+
 declare option xdmp:mapping "false";
 
 declare variable $cpf:document-uri as xs:string external;
@@ -9,14 +13,11 @@ declare variable $cpf:transition as node() external;
 declare variable $cpf:options as element() external;
 
 
-declare variable $DOC as node() := fn:doc($cpf:document-uri);
+declare variable $doc as node() := fn:doc($cpf:document-uri);
 
 
 declare function this:process () as empty-sequence () {
-   let $existing := $DOC/illness
-   let $newnode :=  <blossom>testing</blossom>
-   
-   return xdmp:node-insert-child($existing, $newnode)
+    xdmp:document-insert("/output/new_test.xml", $doc)
 };
 
 if (cpf:check-transition($cpf:document-uri, $cpf:transition)) then 
