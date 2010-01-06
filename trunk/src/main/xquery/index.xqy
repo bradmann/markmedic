@@ -71,7 +71,15 @@ return
     {
         local:mapScripts()
     }
-
+<script>
+<!--
+    function clearAll() {
+        document.getElementById("illness-search-term").value = "";
+        //>>document.getElementById("Submit").submit();
+    }
+    
+//-->
+</script>
 </head>
 
 <body onload="initialize()">
@@ -82,7 +90,8 @@ return
       <p>
         <input name="illness-search-term" type="text" id="illness-search-term" size="35" value="{$illness-search-string}"/>
         <input type="submit" name="Submit" id="Submit" value="Search" />
-        <input type="reset" name="Reset" id="Reset" value="X" />
+        <input type="button" name="Clear" id="clear" value="X" onclick="clearAll()" />
+        
       </p>
     
     </form>
