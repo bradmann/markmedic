@@ -9,13 +9,13 @@ declare namespace xs = "http://www.w3.org/2001/XMLSchema";
 declare function local:illness-select() {
    for $doc in fn:collection("illness")
   let $off-name := $doc/illness/names/official-name/text()
-  let $LOG := xdmp:log(fn:concat("$off-name='", $off-name, "'"))
-  let $LOG := xdmp:log(fn:concat("$doc='", xdmp:quote($doc), "'"))
+  let $_ := xdmp:log(fn:concat("$off-name='", $off-name, "'"))
+  let $_ := xdmp:log(fn:concat("$doc='", xdmp:quote($doc), "'"))
   return 
   <xf:item><xf:label>{$off-name}</xf:label><xf:value>{$off-name}</xf:value></xf:item>
 };
 
-let $SET := xdmp:set-response-content-type("application/xml")
+let $_ := xdmp:set-response-content-type("application/xml")
 let $uri := "/person1.xml"
 let $model :=
     <xf:model>
