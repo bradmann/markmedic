@@ -15,6 +15,8 @@ var __DRAW_BOX = false;
 var colorSet = "#AA6600";
 var colorDrawing = "#0000CC";
 
+var infowindowLevel = 0;
+var infowindow = new google.maps.InfoWindow();
 
 function initialize() {
     var myOptions = {
@@ -22,6 +24,13 @@ function initialize() {
     	    center: new google.maps.LatLng(40, -95),
     	    mapTypeId: google.maps.MapTypeId.TERRAIN
     	  }
+    
+    __RED_PIN_ICON = new google.maps.MarkerImage("/resources/images/mm_20_red.png",
+  	      new google.maps.Size(12, 20), // This marker is 20 pixels wide by 32 pixels tall.
+  	      new google.maps.Point(0,0),   // The origin for this image is 0,0.
+  	      new google.maps.Point(6, 20)); // The anchor for this image is the base of the flagpole at 0,32.
+    
+    
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
     bounds = new google.maps.LatLngBounds();
@@ -35,6 +44,7 @@ function setMarkers(map, locations) {
 	for (var i = 0; i < locations.length; i++) {
 		var point = locations[i];
 		var myLatLng = new google.maps.LatLng(point[2], point[1]);
+		var uri = point[4];
 		
 		var marker = new google.maps.Marker({
 			position: myLatLng,
@@ -43,10 +53,29 @@ function setMarkers(map, locations) {
 			title: unescape(point[0])
 		});
 		
-
-        //bounds.extend(myLatLng);
+		attachInfowindow(marker,i,uri);
+		
+        bounds.extend(myLatLng);
 	}
 }
+
+function attachInfowindow(marker, number, uri) {
+
+
+	var url = "/services/get-person-window-by-uri.xqy?uri=" + uri;
+	
+	  google.maps.event.addListener(marker, 'click', function() {
+		  
+		var request = initRequest();
+       request.open("GET", url, false);
+       request.send("");
+       var dataR = request.responseText;
+		infowindow.setContent(dataR);
+	    infowindow.open(map,marker);
+	    
+	  });
+}
+
 /**
 
 function addLatLng(event) {
@@ -174,7 +203,7 @@ function resubmit() {
 	document.getElementById("searchform").submit();
 }
 
-
+*/
 // Utility function to make AJAX calls easier 
 function initRequest() {
 	request = false;
@@ -199,4 +228,4 @@ function initRequest() {
 	return request;
 }
 
-*/
+
