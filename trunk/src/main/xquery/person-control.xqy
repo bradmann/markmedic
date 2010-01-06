@@ -16,7 +16,7 @@ declare function local:illness-select() {
 };
 
 let $_ := xdmp:set-response-content-type("application/xml")
-let $uri := "/person1.xml"
+let $uri := xdmp:get-request-field('uri')
 let $model :=
     <xf:model>
       <xf:instance id="builder" src="person-action.xqy?uri={$uri}" />
