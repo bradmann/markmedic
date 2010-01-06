@@ -2,7 +2,7 @@ xquery version "1.0-ml";
 
 import module namespace cpf = "http://marklogic.com/cpf" at "/MarkLogic/cpf/cpf.xqy";
 
-(:import module namespace person = "http://marklogic.com/person" at "/MarkLogic/markmedic/person.xqy";:)
+import module namespace person = "http://marklogic.com/person" at "/markmedic/person.xqy";
 
 declare namespace this = "http://markmedic/processing";
 
@@ -17,7 +17,7 @@ declare variable $doc as node() := fn:doc($cpf:document-uri);
 
 
 declare function this:process () as empty-sequence () {
-    xdmp:document-insert("/output/new_test.xml", $doc)
+    xdmp:document-insert("/output2/obvious.xml", person:make-person($doc))
 };
 
 if (cpf:check-transition($cpf:document-uri, $cpf:transition)) then 

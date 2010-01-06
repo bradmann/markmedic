@@ -1,6 +1,6 @@
 module namespace person = "http://marklogic.com/person";
 
-declare function person:make-person($illnessDoc as node()) as element()
+declare function person:make-person($illnessDoc as node()) as node()
 {
 <person>
 <biography>
