@@ -5,7 +5,9 @@
 		<common-name>flu</common-name>
 		<common-name>influenza</common-name>
 	</names>
-	<description>Influenza, commonly referred to as the flu, is an infectious disease caused by RNA viruses of the family Orthomyxoviridae (the influenza viruses), that affects birds and mammals. 
+	<description>Influenza, commonly referred to as the flu, is an infectious disease caused 
+	by RNA viruses of the family Orthomyxoviridae (the influenza viruses), that 
+	affects birds and mammals. 
 	</description>
 	<symptoms>
 		<symptom>sore throat</symptom>
