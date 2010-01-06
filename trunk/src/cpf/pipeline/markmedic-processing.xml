@@ -20,6 +20,15 @@
 		<on-success>http://marklogic.com/states/start</on-success>
 		<on-failure>http://marklogic.com/states/error</on-failure>
 	</state-transition>
+
+	<state-transition>
+		<annotation>
+			Document updated
+		</annotation>
+		<state>http://marklogic.com/states/updated</state>
+		<on-success>http://marklogic.com/states/start</on-success>
+		<on-failure>http://marklogic.com/states/error</on-failure>
+	</state-transition>
 	
 	
 	<state-transition>
