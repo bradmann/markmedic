@@ -74,8 +74,9 @@ return
   <div id="leftcol">
     <form id="form1" name="form1" method="post" action="index.xqy">
       <p>
-        <input name="illness-search-term" type="text" id="illness-search-term" size="40" value="{$illness-search-string}"/>
+        <input name="illness-search-term" type="text" id="illness-search-term" size="35" value="{$illness-search-string}"/>
         <input type="submit" name="Submit" id="Submit" value="Search" />
+        <input type="reset" name="Reset" id="Reset" value="x" />
       </p>
     
     </form>
