@@ -23,7 +23,10 @@ declare function illmod:search-illness($searchString as xs:string?) as element(i
         
         
         
-        xdmp:directory("/illnesses/")/illness
+        for $ill in xdmp:directory("/illnesses/")/illness
+        order by $ill/names/official-name
+        return
+        $ill
 
 
 };
