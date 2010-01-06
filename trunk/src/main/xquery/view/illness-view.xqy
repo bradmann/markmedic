@@ -22,11 +22,13 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
     {$ill/description/text()}
     </p>
     <p>
-    Symptoms: {$ill/symptoms/symptom/text()}
-    <br/>
-    Treatments: {$ill/treatments/treatment/text()}
-    <br/>
-    Other names: {$ill/names/common-name/text()}
+    Symptoms: {fn:string-join($ill/symptoms/symptom/text(),", ")}
+    </p>
+    <p>
+    Treatments: {fn:string-join($ill/treatments/treatment/text(),", ")}
+    </p>
+    <p>
+    Other names: {fn:string-join($ill/names/common-name/text(),", ")}
     </p>
     <p>[<a href="">Edit</a>]</p>
 </div> 
