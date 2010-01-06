@@ -29,6 +29,31 @@ declare function local:mapScripts() as node()* {
 };
 
 
+declare function local:manageRequestFields() as element(field)* {
+
+    let $fieldNames := xdmp:get-request-field-names()
+    for $name in $fieldNames 
+    return 
+        element field {
+            element name { $name },
+            element value { xdmp:get-request-field($name) }
+        }
+    
+
+};
+
+let $fields := local:manageRequestFields()
+let $illness-search-field := $fields[name = 'illness-search-term']
+let $illness-search-string := 
+    if($illness-search-field) then
+        $illness-search-field/value/text()
+    else
+        ""
+        
+
+return
+
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,9 +70,10 @@ declare function local:mapScripts() as node()* {
 <div id="wrapper">
   <div id="header"><img src="resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></div>
   <div id="leftcol">
-    <form id="form1" name="form1" method="post" action="">
+    <form id="form1" name="form1" method="post" action="index.xqy">
       <p>
-        <input name="q" type="text" id="q" size="40" />
+        <input name="illness-search-term" type="text" id="illness-search-term" size="40" value="{$illness-search-string}"/>
+        
         <input type="submit" name="Submit" id="Submit" value="Search" />
       </p>
     
@@ -56,7 +82,7 @@ declare function local:mapScripts() as node()* {
      <div id="resultpanel">
 
 {
-        illview:searchIllness("")
+        illview:searchIllness($illness-search-string)
 }
 
      </div>
