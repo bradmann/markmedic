@@ -34,14 +34,15 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xf:bind nodeset="person/medical/vaccinations/vaccination/vac-date" type="xsd:date"/>
       <xf:bind nodeset="person/medical/illness-reports/illness-report/illness-start-date" type="xsd:date"/>
       <xf:bind nodeset="person/medical/illness-reports/illness-report/illness-end-date" type="xsd:date"/>
-      <xf:submission id="form1" method="put" action="person-action.xqy?uri={$uri}"/>
+      <xf:submission id="save-form" method="put" action="person-action.xqy?uri={$uri}"/>
+      <xf:submission id="cancel-form" method="put" action="/"/>
     </xf:model>
   </head>
   <body>
  
     <xf:group ref="person/biography">
      <xf:label>Biography:</xf:label>
-    
+     <xf:group>
      <xf:input ref="first-name" incremental="true">
        <xf:label>First Name:</xf:label>
      </xf:input>
@@ -73,12 +74,15 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
      <xf:input ref="dob" incremental="true">
        <xf:label>Date of Birth:</xf:label>
      </xf:input>
+     </xf:group>
     </xf:group>
     
     <xf:group ref="person/medical">
+        <xf:label>Medical:</xf:label>
+        <xf:group>
         <xf:label>Vaccinations:</xf:label>
         <xf:repeat nodeset="vaccinations/vaccination" id="vac-rpt">
-            <xf:group ref=".">
+            <xf:group>
                 <xf:input ref="vac-date" incremental="true">
                    <xf:label>Date:</xf:label>
                 </xf:input>
@@ -88,9 +92,11 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
                 </xf:select1>
             </xf:group>
         </xf:repeat>
+        </xf:group>
         <xf:group>
             <xf:label>Illnesses:</xf:label>
             <xf:repeat nodeset="illness-reports/illness-report" id="illrpt-rpt">
+                <xf:group>
                 <xf:select1 ref="illness-target" selection="open">
                       <xf:label>Illness Name:</xf:label>
                       {local:illness-select()}
@@ -123,6 +129,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
                       <xf:label>x</xf:label>
                       <xf:delete ev:event="DOMActivate" nodeset="." />
                  </xf:trigger>
+                 </xf:group>
                </xf:repeat>
                <xf:trigger>
                    <xf:label>Add Illness</xf:label>
@@ -134,7 +141,11 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
         <xf:textarea ref="history"><xf:label>History:</xf:label></xf:textarea>
     </xf:group>  
     
-     <xf:submit submission="form1">
+    <hr/>
+    <xf:submit submission="cancel-form">
+        <xf:label>Cancel</xf:label>
+     </xf:submit>
+     <xf:submit submission="save-form">
         <xf:label>Save</xf:label>
      </xf:submit>
   </body>
