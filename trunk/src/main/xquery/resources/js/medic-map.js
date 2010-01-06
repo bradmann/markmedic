@@ -18,7 +18,7 @@ var colorDrawing = "#0000CC";
 
 function initialize() {
     var myOptions = {
-    	    zoom: 4,
+    	    zoom: 3,
     	    center: new google.maps.LatLng(40, -95),
     	    mapTypeId: google.maps.MapTypeId.TERRAIN
     	  }
