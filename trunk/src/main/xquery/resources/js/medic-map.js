@@ -35,7 +35,7 @@ function initialize() {
 
     bounds = new google.maps.LatLngBounds();
     setMarkers(map, people);
-    //map.fitBounds(bounds);
+    map.fitBounds(bounds);
 }
 
 
