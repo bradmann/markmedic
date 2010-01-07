@@ -59,6 +59,7 @@ let $log := xdmp:log(fn:concat("Controller: term is : '",$illness-search-string,
 let $log := xdmp:log(xdmp:describe($illness-search-string))
         
 
+
 return
 
 
