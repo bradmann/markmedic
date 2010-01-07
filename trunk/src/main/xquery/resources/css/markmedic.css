@@ -106,3 +106,12 @@ hr {
 input {
 	border: solid 1px black;
 }
+
+table {
+	border: solid 1px #ccc;
+}
+
+td {
+	margin: 5px;
+	vertical-align: top;
+}

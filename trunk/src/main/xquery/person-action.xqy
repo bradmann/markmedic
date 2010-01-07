@@ -1,16 +1,20 @@
 xquery version "1.0-ml";
 
 declare function local:do-get($uri as xs:string) as element() {
-    <data>{fn:doc($uri)/node()}</data>
+    let $doc := if ($uri) then fn:doc($uri) else ()
+    let $doc := if ($doc) then $doc else fn:doc("/empty-person.xml")
+    return
+        <data>{$doc}</data>
 };
 
 declare function local:do-post($data as element()) as element() {
     $data
 };
 
-declare function local:do-put($uri as xs:string, $data as element()) as element() {
-    let $ACT := xdmp:document-insert($uri, $data)
-    return <div>Saved!</div>
+declare function local:do-put($uri as xs:string, $data as element()) {    
+    let $new-uri := if ($uri) then $uri else fn:concat("/submissions/", xdmp:hash32($data))
+    let $_ := xdmp:document-insert($new-uri, $data, (), ("persons", "submissions"))
+    return xdmp:redirect-response(fn:concat("/person-control.xqy?uri=", $new-uri))
 };
 
 let $uri := xdmp:get-request-field("uri")

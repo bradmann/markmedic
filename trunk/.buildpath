@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <buildpath>
 	<buildpathentry kind="src" path="src/cpf/modules"/>
+	<buildpathentry kind="src" path="src/damonstuff"/>
 	<buildpathentry kind="src" path="src/main/xquery"/>
 	<buildpathentry kind="con" path="org.eclipse.dltk.launching.INTERPRETER_CONTAINER"/>
 </buildpath>

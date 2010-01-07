@@ -5,7 +5,7 @@ declare namespace xf = "http://www.w3.org/2002/xforms";
 declare namespace ev = "http://www.w3.org/2001/xml-events";
 declare namespace xs = "http://www.w3.org/2001/XMLSchema";
 
-declare function tmpl:render($model, $left-content, $right-content) {
+declare function tmpl:render($title, $model, $left-content, $right-content) {
     (
     <?xml-stylesheet href="resources/xsltforms/xsltforms.xsl"
     type="text/xsl"?>,
@@ -16,7 +16,7 @@ declare function tmpl:render($model, $left-content, $right-content) {
     xmlns:ev="http://www.w3.org/2001/xml-events"
     >
       <head>
-        <title>Illness Detail</title>
+        <title>{$title}</title>
         <link rel="stylesheet" type="text/css" href="/resources/css/markmedic.css"/>
         {$model}
       </head>
