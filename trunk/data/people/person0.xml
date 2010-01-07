@@ -20,7 +20,7 @@
             <vaccination>
                 <vac-date>2009-10-21</vac-date>
                 <vac-targets>
-                    <vac-target>H1N1 Influenza</vac-target>
+                    <vac-target>Influenza A virus subtype H1N1</vac-target>
                 </vac-targets>
             </vaccination>
         </vaccinations>
@@ -29,7 +29,7 @@
                 <illness-start-date>2009-12-11</illness-start-date>
                 <illness-end-date>2009-12-30</illness-end-date>
                 <illness-certainty>100</illness-certainty>
-                <illness-target>H1N1 Influenza</illness-target>
+                <illness-target>Influenza A virus subtype H1N1</illness-target>
                 <illness-symptoms>
                     <illness-symptom>vomiting</illness-symptom>
                     <illness-symptom>aches</illness-symptom>
