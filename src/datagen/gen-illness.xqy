@@ -1,15 +1,20 @@
 let $locations := xdmp:directory('/datagen/')
 let $loc-count := (fn:count($locations) -1)
+
+let $illnesses := fn:distinct-values(   (/illness/names)/common-name[1]/text()    )
+let $illness-count := (fn:count($illnesses ) -1)
+
 return
 
-for $x in (1 to 300)
+for $x in (1 to 200)
 return
-let $rand := ( xdmp:random($loc-count) +1 )
+let $rand-loc := ( xdmp:random($loc-count) +1 )
+let $rand-illness := ( xdmp:random($illness-count) +1 )
 let $ill :=
-<illness name="bad cold">
+<illness name="{($illnesses) [$rand-illness]}">
     <age>{(xdmp:random(99)+1)}</age>
     <date>2009-12-16T14:18:18.309-05:00</date>
-    {  ($locations) [$rand]  }
+    {  ($locations) [$rand-loc]  }
     <symptom>
         <type>cough</type>
         <qualifier>dry</qualifier>

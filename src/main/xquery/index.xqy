@@ -21,7 +21,7 @@ declare function local:get-search-result-points($searchString as xs:string?) {(
     "var people = [ ",
     
     fn:string-join(
-        for $person at $i in cts:search(/person,$query)
+        for $person at $i in (cts:search(/person,$query))[1 to 250]
         let $uri := xdmp:node-uri($person)
         let $name := $person/biography/first-name/text()
         let $position := fn:concat($person//geo/lat/text(), "," , $person//geo/long/text()) 
