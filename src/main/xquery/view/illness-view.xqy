@@ -22,11 +22,15 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
     return
     
     for $ill in $illnesses 
+    let $illcount := fn:count( cts:search(/person, 
+                cts:element-value-query(
+                    xs:QName("illness-target"), 
+                    $ill//official-name/text()   )  ))
     return
 
 <div>
     <p>
-    <b>{$ill/names/official-name/text()}</b> ( )
+    <b>{$ill/names/official-name/text()}</b> ({$illcount})
     </p>
     <p>
     {$ill/description/text()}
