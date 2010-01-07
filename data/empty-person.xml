@@ -1,0 +1,35 @@
+<person>
+    <biography>
+        <dob>1776-07-04</dob>
+        <first-name>(Please Enter Text)</first-name>
+        <last-name>(Please Enter Text)</last-name>
+        <address1>(Please Enter Text)</address1>
+        <address2>(Please Enter Text)</address2>
+        <city>(Please Enter Text)</city>
+        <state>(Please Enter Text)</state>
+        <zip>(Please Enter Text)</zip>
+        <gender>(Please Enter Text)</gender>
+        <ethnicity>(Please Enter Text)</ethnicity>
+    </biography>
+    
+    <medical>
+        <history>Free (Please Enter Text)</history>
+        <vaccinations>
+            <vaccination>
+                <vac-date>1776-07-04</vac-date>
+                <vac-target>Illness reference text</vac-target>
+            </vaccination>
+        </vaccinations>
+        <illness-reports>
+            <illness-report>
+                <illness-start-date>1776-07-04</illness-start-date>
+                <illness-end-date>1776-07-04</illness-end-date>
+                <illness-certainty>(Please Enter Text)</illness-certainty>
+                <illness-target>(Please Select)</illness-target>
+                <illness-symptoms>
+                    <illness-symptom>(Please Enter Text)</illness-symptom>
+                </illness-symptoms>
+            </illness-report>
+        </illness-reports>
+    </medical>
+</person>
