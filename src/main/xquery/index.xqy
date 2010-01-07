@@ -1,13 +1,27 @@
 import module namespace illview = 'http://www.example.com/illness-view' at "/view/illness-view.xqy";
+import module namespace illmod = 'http://www.example.com/illness-model' at "/model/illness-model.xqy";
 
 
-declare function local:get-search-result-points() {(
+declare function local:get-search-result-points($searchString as xs:string?) {(
+    
+    let $illnames := illmod:search-illness($searchString)//official-name/text()
+    let $query := cts:or-query(
+    
+            for $term in $illnames
+            return
+            cts:element-value-query(
+                xs:QName("illness-target"), 
+                $term)
+                    )
+    let $_ := xdmp:log(xdmp:quote($query))
+    
+    return
     
     fn:concat(
     "var people = [ ",
     
     fn:string-join(
-        for $person at $i in /person
+        for $person at $i in cts:search(/person,$query)
         let $uri := xdmp:node-uri($person)
         let $name := $person/biography/first-name/text()
         let $position := fn:concat($person//geo/lat/text(), "," , $person//geo/long/text()) 
@@ -19,8 +33,8 @@ declare function local:get-search-result-points() {(
 )}; 
   
   
-declare function local:mapScripts() as node()* {
-    let $js-data := local:get-search-result-points()
+declare function local:mapScripts($searchString as xs:string?) as node()* {
+    let $js-data := local:get-search-result-points($searchString)
     return
     (
         <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>,
@@ -71,7 +85,7 @@ return
 <link href="resources/css/markmedic.css" rel="stylesheet" type="text/css" />
 
     {
-        local:mapScripts()
+        local:mapScripts($illness-search-string)
     }
 <script>
 <!--
