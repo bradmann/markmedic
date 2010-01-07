@@ -7,9 +7,9 @@ let $ors :=
 let $name := $ill/illness/names/official-name
 let $uri := fn:concat("/rules/", fn:encode-for-uri($name), ".xml")
 let $content:=
-<reverse>
+<markmedic-rule>
       <name>{$name}</name>
       <uri>{$uri}</uri>
       {cts:or-query($ors)}
-</reverse>
+</markmedic-rule>
 return (xdmp:document-insert($uri, $content, (), "rules"), $uri)
