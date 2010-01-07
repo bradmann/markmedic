@@ -1,5 +1,6 @@
 import module namespace illview = 'http://www.example.com/illness-view' at "/view/illness-view.xqy";
 
+
 declare function local:get-search-result-points() {(
     
     fn:concat(
@@ -106,10 +107,21 @@ return
   </div>
   <div id="rightcol">
   
+  <div id="right_buttons">
+    <form id="form2" name="form2" method="post" action="myrisk.xqy">
+        Zip :
+        <input name="my-zip" type="text" id="my-zip" size="5" />
+        <input type="submit" name="Submit" id="Submit" value="Evaluate My Risk" />
+    </form>
+  </div>
+  
   <div id="map_canvas" style="width:540px; height:400px"></div>
   </div>
+
   
   <div id="footer"> </div>
 </div>
 </body>
 </html>
+
+

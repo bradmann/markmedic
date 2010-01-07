@@ -64,6 +64,10 @@ body {
 	padding-left: 15px;
 }
 
+#right_buttons {
+	float:right;
+}
+
 span label {
 	clear: both;
 	display: block;
