@@ -14,7 +14,10 @@ declare function person:make-person($illnessDoc as node()) as node()
 declare function person:get-biography($illnessDoc as node()) as element(biography) {
     let $zip := $illnessDoc//location[@type='zip']/text()
     let $city := $illnessDoc//location[@type='city']/text()
-    let $geocode := geoc:geocode-zip(fn:concat($zip," ",$city))
+    let $geocode := 
+        if($zip) then geoc:geocode-zip($zip) 
+        else if($city) then geoc:geocode-zip($city) 
+        else ()
     return
     <biography> 
         <dob>1979-05-21</dob>
