@@ -1,6 +1,6 @@
 
 import module namespace geoc = 'http://www.example.com/geocode.xqy' at "/services/geocode.xqy";
-
+import module namespace const = 'http://marklogic.com/constants' at "/common/constants.xqy";
 
 
 declare function local:manageRequestFields() as element(field)* {
@@ -54,15 +54,18 @@ return
     </form>
     
      <div id="resultpanel">
-        {
-            "My Risk Assesment"
-        }
-        
+      {fn:concat("Risk Assement for location: ",$my-zip)}
+      
      </div>
   </div>
   <div id="rightcol">
   
-    My Assesment
+    {
+        let $pos := fn:concat(($my-geo//text())[2],",",($my-geo//text())[1])
+        return
+        <img src="http://maps.google.com/maps/api/staticmap?center={$pos}&amp;zoom=4&amp;size=500x400&amp;maptype=terrain
+&amp;markers=color:blue|{$pos}&amp;sensor=false&amp;key={const:get-google-key()}"/>
+     } 
   
   </div>
 
