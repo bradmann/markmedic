@@ -13,11 +13,13 @@ declare function person:make-person($illnessDoc as node()) as node()
 
 declare function person:get-biography($illnessDoc as node()) as element(biography) {
     let $zip := $illnessDoc//location[@type='zip']/text()
-    let $geocode := geoc:geocode-zip($zip)
+    let $city := $illnessDoc//location[@type='city']/text()
+    let $geocode := geoc:geocode-zip(fn:concat($zip," ",$city))
     return
     <biography> 
         <dob>1979-05-21</dob>
         <first-name>Anonymous</first-name>
+        <city>{$city}</city>
         <zip>{$zip}</zip>
         {$geocode}
     </biography>
