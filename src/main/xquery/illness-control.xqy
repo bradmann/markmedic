@@ -68,4 +68,4 @@ let $content :=
         <xf:label>Save</xf:label>
      </xf:submit>
     </span>
-return tmpl:render($model, $content, ())
+return tmpl:render("Illness Detail", $model, $content, ())
