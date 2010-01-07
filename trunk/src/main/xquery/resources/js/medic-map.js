@@ -38,6 +38,24 @@ function initialize() {
     map.fitBounds(bounds);
 }
 
+function initializeLocal() {
+    var myOptions = {
+    	    zoom: 3,
+    	    center: new google.maps.LatLng(40, -95),
+    	    mapTypeId: google.maps.MapTypeId.TERRAIN
+    	  }
+    
+    __RED_PIN_ICON = new google.maps.MarkerImage("/resources/images/mm_20_red.png",
+  	      new google.maps.Size(12, 20), // This marker is 20 pixels wide by 32 pixels tall.
+  	      new google.maps.Point(0,0),   // The origin for this image is 0,0.
+  	      new google.maps.Point(6, 20)); // The anchor for this image is the base of the flagpole at 0,32.
+    
+    
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+    bounds = new google.maps.LatLngBounds();
+    map.fitBounds(bounds);
+}
 
 
 function setMarkers(map, locations) {
