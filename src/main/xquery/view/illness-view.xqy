@@ -45,7 +45,7 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
     Other names: {fn:string-join($ill/names/common-name/text(),", ")}
     </p>
     <p>[<a href="/illness-control.xqy?uri={xdmp:node-uri($ill)}">Edit</a>]</p>
-    <p>&amp;nbsp;</p>
+    <p>&nbsp;</p>
 </div> 
 
 
