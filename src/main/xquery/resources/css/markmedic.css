@@ -3,20 +3,34 @@
 
 #header {
 }
+
+
+
 #leftcol {
 	float: left;
-	width: 340px;
+	width: 390px;
 	padding-top: 20px;
 	padding-right: 30px;
 	padding-bottom: 30px;
 	padding-left: 30px;
 	font-size: 11px;
 }
+
 #rightcol {
 	float: right;
-	width: 540px;
 	padding-top: 30px;
+	padding-right: 40px;
+}
+
+
+#wrapper>#leftcol {
+	float: left;
+	width: 330px;
+	padding-top: 20px;
 	padding-right: 30px;
+	padding-bottom: 30px;
+	padding-left: 30px;
+	font-size: 11px;
 }
 
 #leftcol a {
