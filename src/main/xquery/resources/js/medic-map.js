@@ -49,7 +49,19 @@ function initializeLocal() {
   	      new google.maps.Size(12, 20), // This marker is 20 pixels wide by 32 pixels tall.
   	      new google.maps.Point(0,0),   // The origin for this image is 0,0.
   	      new google.maps.Point(6, 20)); // The anchor for this image is the base of the flagpole at 0,32.
+    __BLUE_PIN_ICON = new google.maps.MarkerImage("/resources/images/mm_20_blue.png",
+  	      new google.maps.Size(12, 20), // This marker is 20 pixels wide by 32 pixels tall.
+  	      new google.maps.Point(0,0),   // The origin for this image is 0,0.
+  	      new google.maps.Point(6, 20)); // The anchor for this image is the base of the flagpole at 0,32.
     
+    
+    /**
+     // if there is a geospatial polygon saved in the session, draw it
+  poly = new google.maps.Polyline();
+  initPoly();
+  poly.setMap(map);
+  google.maps.event.addListener(map, 'click', addLatLng);
+     */
     
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
