@@ -64,11 +64,14 @@ function initializeLocal() {
      */
     
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
     bounds = new google.maps.LatLngBounds();
+    setMarkers(map, people);
+    createMarker(map, localPoint);
     map.fitBounds(bounds);
+    var circle = new CircleOverlay(localPoint, 50.0, "#0000FF", 3, 1.0, "#0000FF", .3);
+    circle.initialize(map);
+    circle.redraw();
 }
-
 
 function setMarkers(map, locations) {
 	for (var i = 0; i < locations.length; i++) {
@@ -87,6 +90,16 @@ function setMarkers(map, locations) {
 		
         bounds.extend(myLatLng);
 	}
+}
+
+function createMarker(map, latlng) {
+	var marker = new google.maps.Marker({
+		position: latlng,
+		map: map,
+		icon: __BLUE_PIN_ICON,
+		title: "My Location"
+	});
+	bounds.extend(latlng);
 }
 
 function attachInfowindow(marker, number, uri) {

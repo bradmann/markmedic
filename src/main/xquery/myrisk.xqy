@@ -3,7 +3,6 @@ import module namespace geoc = 'http://www.example.com/geocode.xqy' at "/service
 import module namespace geoq = 'http://www.example.com/geoquery.xqy' at "/services/geoquery.xqy";
 import module namespace const = 'http://marklogic.com/constants' at "/common/constants.xqy";
 
-
 declare function local:manageRequestFields() as element(field)* {
 
     let $fieldNames := xdmp:get-request-field-names()
@@ -13,23 +12,20 @@ declare function local:manageRequestFields() as element(field)* {
             element name { $name },
             element value { xdmp:get-request-field($name,"") }
         }
-    
-
 };
 
 declare function local:valueFromField($field as element(field)?) as xs:string {
-   
         if($field) then
             fn:concat($field/value/text(),"")
         else
             ""
-
 };
 
 declare function local:mapScripts() as node()* {
     (
     <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>,
-    <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="/resources/js/medic-map.js"></script>
+    <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="/resources/js/medic-map.js"></script>,
+    <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="/resources/js/circle-overlay.js"></script>
     )
 };
 
@@ -65,10 +61,18 @@ return
 {
         local:mapScripts()
 }
-<script type="text/javascript">{local:buildJavascriptPointArray($nearby-illnesses)}</script>
+<script type="text/javascript">
+    {local:buildJavascriptPointArray($nearby-illnesses)}
+    {
+    
+    let $coords := $my-geo//text()
+    return
+    fn:concat("
+    var localPoint = new google.maps.LatLng(",  fn:concat($coords[2],",", $coords[1])   ," );")}
+</script>
 </head>
 
-<body onload="initialize()">
+<body onload="initializeLocal()">
 <div id="wrapper">
   <div id="header"><a href="/"><img src="resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></a></div>
   <div id="leftcol">
