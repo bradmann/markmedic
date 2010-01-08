@@ -76,17 +76,20 @@ return
 <div id="wrapper">
   <div id="header"><a href="/"><img src="resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></a></div>
   <div id="leftcol">
-    <form id="form1" name="form1" method="post" action="index.xqy">
-      <p>
-       <input type="submit" name="Back" id="Back" value="Back to Main Page" />
-      </p>
-    
-    </form>
-    
+    <form id="form2" name="form2" method="post" action="myrisk.xqy">
+        Zip :
+        <input name="my-zip" type="text" id="my-zip" size="5" value="{$my-zip}"/>
+        <input type="submit" name="Submit" id="Submit" value="Evaluate My Risk" />
+    </form>    
      <div id="resultpanel">
-      {fn:concat("Risk Assement for location: ",$my-zip)}
+      <h3>Risk Assement for location: {$my-zip}</h3>
+      Illness count in my area: {fn:count($nearby-illnesses)}
+      <h3>Alerts for this location: </h3>
       
      </div>
+     <form id="form1" name="form1" method="post" action="index.xqy">
+       <p><input type="submit" name="Back" id="Back" value="Back to Main Page" /></p>
+    </form>
   </div>
   <div id="rightcol">
     <div id="map_canvas" style="width:540px; height:400px"></div>
