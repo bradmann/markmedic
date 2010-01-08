@@ -24,6 +24,16 @@ declare function local:set-uri-descent($el, $uri) {
    )
 };
 
+declare function local:process ($person as element(person)) as element(person) {
+    let $results := cts:search(/markmedic-rule, cts:reverse-query($person))
+    let $els := 
+        for $name in $results/name
+        return <suggestion>{$name}</suggestion>
+    let $person := element {fn:local-name($person)} 
+                    {(<suggestions>{$els}</suggestions>, $person/child::node())}
+    return $person
+};
+
 declare function local:do-get($uri as xs:string) as element() {
     let $doc := if ($uri) then fn:doc($uri) else ()
     let $doc := if ($doc) then $doc else fn:doc("/empty-person.xml")
@@ -41,7 +51,7 @@ declare function local:do-put($data as element()) {
     let $new-uri := if ($uri) then xdmp:url-decode($uri) else fn:concat("/submissions/", xdmp:hash32($new-data))
     let $new-data := local:set-uri($new-data, $new-uri)
     let $_ := xdmp:document-insert(xdmp:url-encode ($new-uri), $new-data, (), ("persons", "submissions"))
-    return <data>{$new-data}</data>
+    return <data>{local:process($new-data)}</data>
 };
 
 let $uri := xdmp:get-request-field("uri")
