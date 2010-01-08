@@ -84,6 +84,7 @@ return
      <div id="resultpanel">
       <h3>Risk Assement for location: {$my-zip}</h3>
       Illness count in my area: {fn:count($nearby-illnesses)}
+      <div id="risk_assessment"></div>
       <h3>Alerts for this location: </h3>
       
      </div>

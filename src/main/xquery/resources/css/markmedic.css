@@ -70,6 +70,13 @@ body {
 	float:right;
 }
 
+#risk_assessment {
+	font-size: 20pt;
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
+}
+
 span label {
 	clear: both;
 	display: block;

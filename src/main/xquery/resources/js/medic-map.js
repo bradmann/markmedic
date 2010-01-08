@@ -54,24 +54,24 @@ function initializeLocal() {
   	      new google.maps.Point(0,0),   // The origin for this image is 0,0.
   	      new google.maps.Point(6, 20)); // The anchor for this image is the base of the flagpole at 0,32.
     
-    
-    /**
-     // if there is a geospatial polygon saved in the session, draw it
-  poly = new google.maps.Polyline();
-  initPoly();
-  poly.setMap(map);
-  google.maps.event.addListener(map, 'click', addLatLng);
-     */
-    
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     bounds = new google.maps.LatLngBounds();
     setMarkers(map, people);
     createMarker(map, localPoint);
-    //map.fitBounds(bounds);
     var circle = new CircleOverlay(localPoint, 16.0, "#0000FF", 3, 1.0, "#0000FF", .3);
     circle.initialize(map);
     circle.redraw();
     map.fitBounds(circle.bounds);
+    
+    var count = people.length;
+    var risk = "low";
+    
+    if (count > 50) risk = "moderate";
+    if (count > 150) risk = "high";
+    
+    var colors = {"low": "#00FF00", "moderate": "#FFFF00", "high": "#FF0000"};
+    $("#risk_assessment").html(risk);
+    $("#risk_assessment").css("background-color", colors[risk]);
 }
 
 function setMarkers(map, locations) {
