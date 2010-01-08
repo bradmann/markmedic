@@ -21,16 +21,32 @@ let $_ := xdmp:set-response-content-type("application/xml")
 let $uri := xdmp:get-request-field('uri')
 let $model :=
     <xf:model>
-      <xf:instance id="builder" src="person-action.xqy?uri={$uri}" />
+      <xf:instance src="person-action.xqy?uri={$uri}" id="person" />
+      <!--xf:instance id="new-symptom">
+        <span>
+        <xf:input ref="person/medical/illness-reports/illness-report/illness-symptoms/illness-symptom" incremental="true" />
+        <xf:trigger appearance="minimal">
+              <xf:label>x</xf:label>
+              <xf:delete ev:event="DOMActivate" nodeset="." />
+        </xf:trigger>  
+        </span>
+      </xf:instance-->
       <xf:bind nodeset="person/biography/dob" type="xsd:date"/>
       <xf:bind nodeset="person/medical/vaccinations/vaccination/vac-date" type="xsd:date"/>
       <xf:bind nodeset="person/medical/illness-reports/illness-report/illness-start-date" type="xsd:date"/>
       <xf:bind nodeset="person/medical/illness-reports/illness-report/illness-end-date" type="xsd:date"/>
-      <xf:submission id="save-form" method="put" action="person-action.xqy?uri={$uri}"/>
-      <xf:submission id="cancel-form" method="put" action="/"/>
+      <xf:submission id="save-form" method="put" action="person-action.xqy" instance="person" replace="instance">
+      </xf:submission>
+      <xf:submission id="cancel-form" method="put" action="/"/>      
     </xf:model>
 let $template :=
     <span>    
+    <div>
+        <xf:output ref="person/uri" incremental="true">
+           <xf:label>URI:</xf:label>
+        </xf:output>
+    </div>
+     
     <xf:group ref="person/biography">
      <xf:label>Biography:</xf:label>
      <xf:group>
@@ -131,7 +147,7 @@ let $template :=
                     </xf:repeat>
                     <xf:trigger>
                        <xf:label>Add Symptom</xf:label>
-                       <xf:insert nodeset="illness-symptoms/illness-symptom" position="after" at="count(illsym-rpt)" ev:event="DOMActivate"/>
+                       <xf:insert nodeset="instance('new-symptom')" position="after" at="count(illsym-rpt)" ev:event="DOMActivate"/>
                      </xf:trigger>
                 </xf:group>
                 <xf:trigger>
