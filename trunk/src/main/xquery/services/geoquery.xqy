@@ -10,5 +10,6 @@ declare function geoq:geoquery-search($geo as element(geo), $proximity as xs:flo
     let $point := cts:point($geo/lat, $geo/long)
     let $cir := cts:circle($proximity, $point)
     let $query := cts:element-pair-geospatial-query(xs:QName("geo"), xs:QName("lat"), xs:QName("long"), $cir)
+    let $_ := xdmp:log($query)
     return cts:search(/person, $query)
 };

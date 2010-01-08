@@ -68,7 +68,7 @@ function initializeLocal() {
     setMarkers(map, people);
     createMarker(map, localPoint);
     map.fitBounds(bounds);
-    var circle = new CircleOverlay(localPoint, 50.0, "#0000FF", 3, 1.0, "#0000FF", .3);
+    var circle = new CircleOverlay(localPoint, 16.0, "#0000FF", 3, 1.0, "#0000FF", .3);
     circle.initialize(map);
     circle.redraw();
 }
