@@ -60,7 +60,7 @@
 }
 body {
 	background-color: #C8C8C8;
-	padding-top: 0px;
+	padding-top: 6px;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	line-height: 1.2em;
@@ -80,10 +80,11 @@ body {
 }
 
 #risk_assessment {
-	font-size: 20pt;
-	padding: 10px;
+	font-size: 14pt;
+	padding: 20px;
 	margin: 10px;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 span label {
@@ -146,5 +147,13 @@ td {
 }
 
 .highlight {
-	background-color:#D22B37;
+	background-color: #D22B37;
+}
+
+.newsterm {
+	color: #D22B37;
+}
+
+a {
+	color: #D22B37;
 }
