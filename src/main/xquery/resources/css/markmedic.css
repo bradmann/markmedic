@@ -35,9 +35,18 @@
 #leftcol a {
 	color: #AAAAAA;
 }
+
 #leftcol b {
 	font-size: 12px;
 }
+
+#leftcol b a {
+	color:#FFFFFF;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: bold;
+}
+
 
 #footer {
 	clear: both;
