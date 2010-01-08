@@ -103,7 +103,7 @@ return
   <div id="leftcol">
     <form id="form1" name="form1" method="post" action="index.xqy">
       <p>
-        <input name="illness-search-term" type="text" id="illness-search-term" size="35" value="{$illness-search-string}"/>
+        <input name="illness-search-term" type="text" id="illness-search-term" size="30" value="{$illness-search-string}"/>
         <input type="submit" name="Submit" id="Submit" value="Search" />
         <input type="button" name="Clear" id="clear" value="X" onclick="clearAll()" />
         
@@ -127,6 +127,7 @@ return
         <input type="submit" name="Submit" id="Submit" value="Evaluate My Risk" />
     </form>
   </div>
+  <br style="clear:both"/>
   
   <div id="map_canvas" style="width:540px; height:400px"></div>
   </div>
