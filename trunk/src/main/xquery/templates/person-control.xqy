@@ -21,7 +21,7 @@ let $_ := xdmp:set-response-content-type("application/xml")
 let $uri := xdmp:get-request-field('uri')
 let $model :=
     <xf:model>
-      <xf:instance src="person-action.xqy?uri={$uri}" id="person" />
+      <xf:instance src="/endpoints/person-action.xqy?uri={$uri}" id="person" />
       <!--xf:instance id="new-symptom">
         <span>
         <xf:input ref="person/medical/illness-reports/illness-report/illness-symptoms/illness-symptom" incremental="true" />
@@ -45,14 +45,7 @@ let $template :=
         <xf:output ref="person/uri" incremental="true">
            <xf:label>URI:</xf:label>
         </xf:output>
-    </div>
-    
-    <div>Suggestions:</div>
-    <ul>
-       <xf:repeat nodeset="person/suggestions/suggestion">
-            <li><xf:output ref="name/official-name" /></li>
-       </xf:repeat>
-    </ul> 
+    </div>    
     <xf:group ref="person/biography">
      <xf:label>Biography:</xf:label>
      <xf:group>
@@ -162,6 +155,12 @@ let $template :=
                  </xf:trigger>
                  
                  </xf:group>
+                 <div>Suggestions:</div>
+                <ul>
+                   <xf:repeat nodeset="suggestions/suggestion">
+                        <li><xf:output ref="name/official-name" /></li>
+                   </xf:repeat>
+                </ul> 
                  </td>
                </xf:repeat>
                </tr>

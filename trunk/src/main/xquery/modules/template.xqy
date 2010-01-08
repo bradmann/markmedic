@@ -7,7 +7,7 @@ declare namespace xs = "http://www.w3.org/2001/XMLSchema";
 
 declare function tmpl:render($title, $model, $left-content, $right-content) {
     (
-    <?xml-stylesheet href="resources/xsltforms/xsltforms.xsl"
+    <?xml-stylesheet href="/resources/xsltforms/xsltforms.xsl"
     type="text/xsl"?>,
     <!--?xsltforms-options debug="yes"?-->,
     <?css-conversion no?>,
@@ -23,7 +23,7 @@ declare function tmpl:render($title, $model, $left-content, $right-content) {
       <body>
       
       <div id="wrapper">
-      <div id="header"><a href="/"><img src="resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></a></div>
+      <div id="header"><a href="/"><img src="/resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></a></div>
       <div id="leftcol">{$left-content}</div>
       <div id="rightcol">{$right-content}</div>
       

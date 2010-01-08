@@ -14,24 +14,34 @@ declare function local:return-stripped($el) {
 };
 
 declare function local:set-uri($el, $uri) {
-   element{fn:local-name($el)} {(<uri>{$uri}</uri>,$el/child::node())}
-};
-
-declare function local:set-uri-descent($el, $uri) {
-   ($el/text(),
-   for $child in $el/element()
-   return local:set-uri($child, $uri)
-   )
+   element{fn:local-name($el)} {(<uri>{$uri}</uri>,$el/node()[fn:local-name() ne "uri"])}
 };
 
 declare function local:process ($person as element(person)) as element(person) {
-    let $results := cts:search(/markmedic-rule, cts:reverse-query($person))
-    let $els := 
-        for $name in $results/name
-        return <suggestion>{$name}</suggestion>
-    let $person := element {fn:local-name($person)} 
-                    {(<suggestions>{$els}</suggestions>, $person/child::node())}
+    let $ill-rpts := 
+        for $rpt in $person/medical/illness-reports/illness-report
+        let $results := cts:search(/markmedic-rule, cts:reverse-query($rpt))
+        let $els := 
+            for $name in $results/name
+            return <suggestion>{$name}</suggestion>
+        let $_ := xdmp:log(text{("$els=",xdmp:quote($els))})
+        let $new-rpt := element {fn:local-name($rpt)} 
+                        {(<suggestions>{$els}</suggestions>, $rpt/node()[fn:local-name() ne "suggestions"])}
+        let $_ := xdmp:log(text{("$new-rpt=",xdmp:quote($new-rpt))})
+        return $new-rpt
+    let $_ := xdmp:log(text{("$ill-rpts=",xdmp:quote($ill-rpts))})
+    let $person := local:replace-illness-reports($person, $ill-rpts)
     return $person
+};
+
+declare function local:replace-illness-reports($person as element(person), $ill-rpts as element(illness-report)*) as element(person) {
+    <person>
+        {$person/node()[fn:local-name() ne "medical"]}
+        <medical>
+            {$person/medical/node()[fn:local-name() ne "illness-reports"]}
+            <illness-reports>{$ill-rpts}</illness-reports>
+        </medical>
+    </person>
 };
 
 declare function local:do-get($uri as xs:string) as element() {
@@ -46,12 +56,14 @@ declare function local:do-post($data as element()) as element() {
 };
 
 declare function local:do-put($data as element()) {  
-    let $uri := $data/uri/text()
+    let $uri := $data/uri[1]/text()
     let $new-data := local:return-stripped($data)
     let $new-uri := if ($uri) then xdmp:url-decode($uri) else fn:concat("/submissions/", xdmp:hash32($new-data))
     let $new-data := local:set-uri($new-data, $new-uri)
+    let $new-data := local:process($new-data)
+    let $_ := xdmp:log(text{("$uri=", $new-uri)})
     let $_ := xdmp:document-insert(xdmp:url-encode ($new-uri), $new-data, (), ("persons", "submissions"))
-    return <data>{local:process($new-data)}</data>
+    return <data>{$new-data}</data>
 };
 
 let $uri := xdmp:get-request-field("uri")
