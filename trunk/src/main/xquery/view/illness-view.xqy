@@ -44,8 +44,8 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
             <p>
             Other names: {fn:string-join($ill/names/common-name/text(),", ")}
             </p>
-            <p>[<a href="/illness-control.xqy?uri={xdmp:node-uri($ill)}">Edit</a>]</p>
-            <p>&nbsp;</p>
+            <p>[<a href="/templates/illness-control.xqy?uri={xdmp:node-uri($ill)}">Edit</a>]</p>
+            <p>&amp;nbsp;</p>
         </div> 
         
     return cts:highlight($panel, illmod:query-from-string($searchString), <span class="highlight">{$cts:text}</span>)

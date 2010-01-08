@@ -35,7 +35,7 @@ let $model :=
       <xf:bind nodeset="person/medical/vaccinations/vaccination/vac-date" type="xsd:date"/>
       <xf:bind nodeset="person/medical/illness-reports/illness-report/illness-start-date" type="xsd:date"/>
       <xf:bind nodeset="person/medical/illness-reports/illness-report/illness-end-date" type="xsd:date"/>
-      <xf:submission id="save-form" method="put" action="person-action.xqy" instance="person" replace="instance">
+      <xf:submission id="save-form" method="put" action="/endpoints/person-action.xqy" instance="person" replace="instance">
       </xf:submission>
       <xf:submission id="cancel-form" method="put" action="/"/>      
     </xf:model>
