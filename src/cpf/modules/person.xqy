@@ -28,6 +28,7 @@ declare function person:get-biography($illnessDoc as node()) as element(biograph
         <address1></address1>
         <address2></address2>
         <city>{$city}</city>
+        <state></state>
         <zip>{$zip}</zip>
         <gender></gender>
         <ethnicity></ethnicity>
