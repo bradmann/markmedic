@@ -58,7 +58,7 @@ declare function local:do-post($data as element()) as element() {
 declare function local:do-put($data as element()) {  
     let $uri := $data/uri[1]/text()
     let $new-data := local:return-stripped($data)
-    let $new-uri := if ($uri) then xdmp:url-decode($uri) else fn:concat("/submissions/", xdmp:hash32($new-data))
+    let $new-uri := if ($uri) then xdmp:url-decode($uri) else fn:concat("/submissions/", xdmp:hash32($new-data), ".xml")
     let $new-data := local:set-uri($new-data, $new-uri)
     let $new-data := local:process($new-data)
     let $_ := xdmp:log(text{("$uri=", $new-uri)})

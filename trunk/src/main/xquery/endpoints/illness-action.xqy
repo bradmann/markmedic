@@ -12,12 +12,11 @@ declare function local:do-post($data as element()) as element() {
 };
 
 declare function local:do-put($uri as xs:string, $data as element())  {
-    let $ACT := xdmp:document-insert($uri, $data)
-    return
-    
-    xdmp:redirect-response("/index.xqy")
-
-    
+    let $new-uri := if ($uri) then $uri else fn:concat("/illnesses/", $data/names/official-name/text()[1])
+    let $new-uri := fn:concat("/illnesses/", $new-uri)
+    let $_ := xdmp:document-insert($new-uri, $data)
+    return    
+    xdmp:redirect-response("/index.xqy")    
 };
 
 let $uri := xdmp:get-request-field("uri")
