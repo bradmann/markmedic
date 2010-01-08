@@ -7,7 +7,7 @@ declare function illview:search-link($items as xs:string* , $oldText as xs:strin
 
 for $newText at $x in $items
 let $link := fn:concat( fn:encode-for-uri( $oldText)," ",fn:encode-for-uri($newText))
-let $a := <a class="illness_title" normal_name="{fn:replace($newText, " ", "_")}" href="javascript:void(0)">{$newText}</a>
+let $a := if ($x=0) then <a class="illness_title" normal_name="{fn:replace($newText, " ", "_")}" href="javascript:void(0)">{$newText}</a> else <a href="/index.xqy?illness-search-term={$link}">{$newText}</a>
 return 
     if ($x = fn:count($items)) then $a else ($a, ", ")
 };
