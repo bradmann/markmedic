@@ -9,7 +9,7 @@ if($uri) then
     return
     if($person) then
         <div>
-            <h3>{$name}</h3>
+            <h3>{$name} <span style="font-size:8px;">(<a href="/templates/person-control.xqy?uri={$uri}">edit</a>)</span></h3>
             <div>
                 {
                 for $ill in $person//illness-report/illness-target/text()
