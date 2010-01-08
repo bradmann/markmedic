@@ -90,8 +90,7 @@ return
 <script>
 <!--
     function clearAll() {
-        document.getElementById("illness-search-term").value = "";
-        //>>document.getElementById("Submit").submit();
+        window.location.href="/";
     }
     
 //-->
