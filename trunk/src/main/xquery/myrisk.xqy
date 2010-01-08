@@ -23,6 +23,7 @@ declare function local:valueFromField($field as element(field)?) as xs:string {
 
 declare function local:mapScripts() as node()* {
     (
+    <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="/resources/js/jquery-1.3.2.min.js"></script>,
     <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>,
     <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="/resources/js/medic-map.js"></script>,
     <script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" src="/resources/js/circle-overlay.js"></script>
