@@ -16,7 +16,7 @@ declare function local:do-put($uri as xs:string, $data as element())  {
     let $new-uri := fn:concat("/illnesses/", $new-uri)
     let $_ := xdmp:document-insert($new-uri, $data)
     return    
-    xdmp:redirect-response("/index.xqy")    
+    $data
 };
 
 let $uri := xdmp:get-request-field("uri")
