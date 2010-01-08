@@ -7,7 +7,7 @@ declare function illview:search-link($items as xs:string* , $oldText as xs:strin
 
 for $newText at $x in $items
 let $link := fn:concat( fn:encode-for-uri( $oldText)," ",fn:encode-for-uri($newText))
-let $a := <a href="/index.xqy?illness-search-term={$link}">{$newText}</a>
+let $a := <a class="illness_title" normal_name="{fn:replace($newText, " ", "_")}" href="javascript:void(0)">{$newText}</a>
 return 
     if ($x = fn:count($items)) then $a else ($a, ", ")
 };
@@ -32,20 +32,22 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
             <p>
             <b>{illview:search-link($ill/names/official-name/text(),$searchString)}</b> ({$illcount})
             </p>
-            <p>
-            {$ill/description/text()}
-            </p>
-            <p>
-            Symptoms: { illview:search-link($ill/symptoms/symptom/text(),$searchString) }
-            </p>
-            <p>
-            Treatments: {illview:search-link($ill/treatments/treatment/text(),$searchString)}
-            </p>
-            <p>
-            Other names: {fn:string-join($ill/names/common-name/text(),", ")}
-            </p>
-            <p>[<a href="/templates/illness-control.xqy?uri={xdmp:node-uri($ill)}">Edit</a>]</p>
-            <p>&nbsp;</p>
+            <div id="{fn:replace($ill/names/official-name/text(), " ", "_")}_panel" class="slide_panel">
+                <p>
+                {$ill/description/text()}
+                </p>
+                <p>
+                Symptoms: { illview:search-link($ill/symptoms/symptom/text(),$searchString) }
+                </p>
+                <p>
+                Treatments: {illview:search-link($ill/treatments/treatment/text(),$searchString)}
+                </p>
+                <p>
+                Other names: {fn:string-join($ill/names/common-name/text(),", ")}
+                </p>
+                <p>[<a href="/templates/illness-control.xqy?uri={xdmp:node-uri($ill)}">Edit</a>]</p>
+                <p>&nbsp;</p>
+            </div>
         </div> 
         
     return cts:highlight($panel, illmod:query-from-string($searchString), <span class="highlight">{$cts:text}</span>)
