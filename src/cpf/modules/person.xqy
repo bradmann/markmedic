@@ -22,10 +22,15 @@ declare function person:get-biography($illnessDoc as node()) as element(biograph
         else ()
     return
     <biography> 
-        <dob>1979-05-21</dob>
+        <dob></dob>
         <first-name>Anonymous</first-name>
+        <last-name></last-name>
+        <address1></address1>
+        <address2></address2>
         <city>{$city}</city>
         <zip>{$zip}</zip>
+        <gender></gender>
+        <ethnicity></ethnicity>
         {$geocode}
     </biography>
 };
@@ -33,11 +38,11 @@ declare function person:get-biography($illnessDoc as node()) as element(biograph
 declare function person:get-medical($illnessDoc as node()) as element(medical)
 {
 <medical>
-        <history>Free Text</history>
+        <history></history>
         <vaccinations>
             <vaccination>
-                <vac-date>Date</vac-date>
-                <vac-target>Illness reference text</vac-target>
+                <vac-date></vac-date>
+                <vac-target></vac-target>
             </vaccination>
         </vaccinations>
         <illness-reports>
