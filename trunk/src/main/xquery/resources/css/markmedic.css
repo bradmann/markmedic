@@ -129,13 +129,20 @@ input {
 	border: solid 1px black;
 }
 
-table {
+table.outer, table.xforms-repeat {
 	border: solid 1px #ccc;
+	width: 790px;
+}
+
+td table.xforms-repeat {
+	border: solid 1px #ccc;
+	width: 270px;
 }
 
 td {
 	margin: 5px;
 	vertical-align: top;
+
 }
 
 .highlight {
