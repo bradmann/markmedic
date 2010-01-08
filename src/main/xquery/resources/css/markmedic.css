@@ -47,6 +47,7 @@
 	margin-right: auto;
 	margin-left: auto;
 	background-color: #FFF;
+	text-align: left;
 }
 body {
 	background-color: #C8C8C8;
@@ -54,6 +55,7 @@ body {
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
 	line-height: 1.2em;
+	text-align: center;
 }
 #resultpanel {
 	background-color: #7D1921;
