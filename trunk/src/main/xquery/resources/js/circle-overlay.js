@@ -8,6 +8,7 @@ var CircleOverlay = function(latLng, radius, strokeColor, strokeWidth, strokeOpa
     this.strokeOpacity = strokeOpacity;
     this.fillColor = fillColor;
     this.fillOpacity = fillOpacity;
+    this.bounds = [];
 }
 
 // Implements GOverlay interface
@@ -38,6 +39,13 @@ CircleOverlay.prototype.redraw = function(force) {
         var vertexLng = this.latLng.lng() + (circleLng * Math.cos(theta));
         var vertextLatLng = new google.maps.LatLng(vertexLat, vertexLng);
         circleLatLngs.push(vertextLatLng); 
+    }
+  
+    this.bounds = new google.maps.LatLngBounds();
+    
+    for (var j = 0; j < circleLatLngs.length; ++j) {
+    	var point = circleLatLngs[j];
+    	this.bounds.extend(point);
     }
     
     this.clear();

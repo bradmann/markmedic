@@ -67,10 +67,11 @@ function initializeLocal() {
     bounds = new google.maps.LatLngBounds();
     setMarkers(map, people);
     createMarker(map, localPoint);
-    map.fitBounds(bounds);
+    //map.fitBounds(bounds);
     var circle = new CircleOverlay(localPoint, 16.0, "#0000FF", 3, 1.0, "#0000FF", .3);
     circle.initialize(map);
     circle.redraw();
+    map.fitBounds(circle.bounds);
 }
 
 function setMarkers(map, locations) {
