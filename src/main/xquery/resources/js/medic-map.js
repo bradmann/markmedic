@@ -18,6 +18,17 @@ var colorDrawing = "#0000CC";
 var infowindowLevel = 0;
 var infowindow = new google.maps.InfoWindow();
 
+$(document).ready(function(){
+	$(".illness_title").click(function(event){
+		var id = "#" + $(this).attr("normal_name") + "_panel";
+		$(id).slideToggle();
+	});
+	
+	if ($("#illness-search-term").val() != "") {
+		$(".slide_panel").css("display", "block");
+	}
+});
+
 function initialize() {
     var myOptions = {
     	    zoom: 3,

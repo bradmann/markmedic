@@ -105,6 +105,10 @@ label, .xforms-group-label {
 	display: block;
 }
 
+.slide_panel {
+	display: none;
+}
+
 button span {
 	font-size: 9px;
 }
