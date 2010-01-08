@@ -8,7 +8,7 @@ declare namespace xs = "http://www.w3.org/2001/XMLSchema";
 
 declare function local:illness-select() {
   (<xf:item><xf:label>(Please Select)</xf:label><xf:value>(Please Select)</xf:value></xf:item>,
-  for $doc in fn:collection("illness")
+  for $doc in fn:collection("illnesses")
   let $off-name := $doc/illness/names/official-name/text()
   let $_ := xdmp:log(fn:concat("$off-name='", $off-name, "'"))
   let $_ := xdmp:log(fn:concat("$doc='", xdmp:quote($doc), "'"))
@@ -46,7 +46,13 @@ let $template :=
            <xf:label>URI:</xf:label>
         </xf:output>
     </div>
-     
+    
+    <div>Suggestions:</div>
+    <ul>
+       <xf:repeat nodeset="person/suggestions/suggestion">
+            <li><xf:output ref="name/official-name" /></li>
+       </xf:repeat>
+    </ul> 
     <xf:group ref="person/biography">
      <xf:label>Biography:</xf:label>
      <xf:group>
