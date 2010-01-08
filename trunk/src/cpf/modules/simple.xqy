@@ -16,13 +16,28 @@ declare variable $doc as node() := fn:doc($cpf:document-uri);
 
 declare function local:process () as empty-sequence () {
     let $person := person:make-person($doc)
-    let $results := cts:search(/markmedic-rule, cts:reverse-query($person))
-    let $els := 
-        for $name in $results/name
-        return <suggestion>{$name}</suggestion>
-    let $person := element {fn:local-name($person)} 
-                    {(<suggestions>{$els}</suggestions>, $person/child::node())}
+    let $ill-rpts := 
+        for $rpt in $person/medical/illness-reports/illness-report
+        let $results := cts:search(/markmedic-rule, cts:reverse-query($rpt))
+        let $els := 
+            for $name in $results/name
+            return <suggestion>{$name}</suggestion>
+        let $_ := xdmp:log(text{("$els=",xdmp:quote($els))})
+        let $new-rpt := element {fn:local-name($rpt)} 
+                        {(<suggestions>{$els}</suggestions>, $rpt/node()[fn:local-name() ne "suggestions"])}
+        return $new-rpt
+    let $person := local:replace-illness-reports($person, $ill-rpts)
     return xdmp:document-insert(  fn:concat("/output/", cvt:basename($cpf:document-uri)  )  , $person)
+};
+
+declare function local:replace-illness-reports($person as element(person), $ill-rpts as element(illness-report)*) as element(person) {
+    <person>
+        {$person/node()[fn:local-name() ne "medical"]}
+        <medical>
+            {$person/medical/node()[fn:local-name() ne "illness-reports"]}
+            <illness-reports>{$ill-rpts}</illness-reports>
+        </medical>
+    </person>
 };
 
 if (cpf:check-transition($cpf:document-uri, $cpf:transition)) then 
