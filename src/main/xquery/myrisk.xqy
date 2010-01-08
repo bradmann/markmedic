@@ -49,7 +49,7 @@ let $fields := local:manageRequestFields()
 let $log := xdmp:log($fields)
 let $my-zip := local:valueFromField($fields[name = 'my-zip'])
 let $my-geo := geoc:geocode-zip($my-zip)
-let $nearby-illnesses := geoq:geoquery-search($my-geo, 50.0)
+let $nearby-illnesses := geoq:geoquery-search($my-geo, 16.0)
 return
 
 
