@@ -1,0 +1,16 @@
+<illness>
+  <names>
+    <official-name>(Please Enter Text)</official-name>
+    <common-name>(Please Enter Text)</common-name>
+  </names>
+  <description>(Please Enter Text)</description>
+  <symptoms>
+    <symptom>(Please Enter Text)</symptom>
+  </symptoms>
+  <treatments>
+    <treatment>(Please Enter Text)</treatment>
+  </treatments>
+  <causes>
+	<cause>(Please Enter Text)</cause>
+  </causes>
+</illness>
