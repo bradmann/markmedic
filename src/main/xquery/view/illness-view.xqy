@@ -30,7 +30,7 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
     let $panel := 
         <div>
             <p>
-            <b>{$ill/names/official-name/text()}</b> ({$illcount})
+            <b>{illview:search-link($ill/names/official-name/text(),$searchString)}</b> ({$illcount})
             </p>
             <p>
             {$ill/description/text()}
