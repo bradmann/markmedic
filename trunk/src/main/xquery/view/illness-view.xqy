@@ -13,6 +13,8 @@ return
 };
 
 
+
+
 declare function illview:searchIllness($searchString as xs:string?) as element(div)*{
 
     let $log := xdmp:log(fn:concat("View: the search string is '",$searchString,"'")) 
@@ -30,7 +32,7 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
     let $panel := 
         <div>
             <p>
-            <b>{illview:search-link($ill/names/official-name/text(),$searchString)}</b> ({$illcount})
+            <b><a href="javascript:void(0)" class="illness_title">{$ill/names/official-name/text()}</a></b> ({$illcount})
             </p>
             <div id="{fn:replace($ill/names/official-name/text(), " ", "_")}_panel" class="slide_panel">
                 <p>

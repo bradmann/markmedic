@@ -49,8 +49,8 @@ declare function local:buildJavascriptPointArray($people as element(person)*) {
 let $fields := local:manageRequestFields()
 let $log := xdmp:log($fields)
 let $my-zip := local:valueFromField($fields[name = 'my-zip'])
-let $my-geo := geoc:geocode-zip($my-zip)
-let $nearby-illnesses := geoq:geoquery-search($my-geo, 16.0)
+let $my-geo := if ($my-zip) then geoc:geocode-zip($my-zip) else ()
+let $nearby-illnesses := if ($my-geo) then geoq:geoquery-search($my-geo, 16.0) else ()
 return
 
 
