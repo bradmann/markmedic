@@ -88,7 +88,7 @@ function initializeLocal() {
 function setMarkers(map, locations) {
 	for (var i = 0; i < locations.length; i++) {
 		var point = locations[i];
-		var myLatLng = new google.maps.LatLng(point[2], point[1]);
+		var myLatLng = new google.maps.LatLng(point[1], point[2]);
 		var uri = point[4];
 		
 		var marker = new google.maps.Marker({

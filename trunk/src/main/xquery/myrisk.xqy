@@ -69,7 +69,7 @@ return
     let $coords := $my-geo//text()
     return
     fn:concat("
-    var localPoint = new google.maps.LatLng(",  fn:concat($coords[2],",", $coords[1])   ," );")}
+    var localPoint = new google.maps.LatLng(",  fn:concat($coords[1],",", $coords[2])   ," );")}
 </script>
 </head>
 

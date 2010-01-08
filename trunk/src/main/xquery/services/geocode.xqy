@@ -34,8 +34,8 @@ declare function geoc:geocode-zip($zip as xs:string) as element(geo) {
         let $coords := fn:tokenize($point-string,",")
         let $geo :=
             element geo {
-             element lat { $coords[1] },
-             element long { $coords[2] }
+             element lat { $coords[2] },
+             element long { $coords[1] }
             }
         
         let $evalCode := fn:concat(" xdmp:document-insert('",$docuri,"',",xdmp:quote($geo),") ")
