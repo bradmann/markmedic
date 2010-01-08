@@ -22,15 +22,11 @@ let $uri := xdmp:get-request-field('uri')
 let $model :=
     <xf:model>
       <xf:instance src="/endpoints/person-action.xqy?uri={$uri}" id="person" />
-      <!--xf:instance id="new-symptom">
+      <xf:instance id="new-symptom">
         <span>
-        <xf:input ref="person/medical/illness-reports/illness-report/illness-symptoms/illness-symptom" incremental="true" />
-        <xf:trigger appearance="minimal">
-              <xf:label>x</xf:label>
-              <xf:delete ev:event="DOMActivate" nodeset="." />
-        </xf:trigger>  
+        
         </span>
-      </xf:instance-->
+      </xf:instance>
       <xf:bind nodeset="person/biography/dob" type="xsd:date"/>
       <xf:bind nodeset="person/medical/vaccinations/vaccination/vac-date" type="xsd:date"/>
       <xf:bind nodeset="person/medical/illness-reports/illness-report/illness-start-date" type="xsd:date"/>
@@ -42,137 +38,151 @@ let $model :=
 let $template :=
     <span>    
     <div>
+
+    </div>
+    <div>
         <xf:output ref="person/uri" incremental="true">
            <xf:label>URI:</xf:label>
         </xf:output>
     </div>    
-    <xf:group ref="person/biography">
-     <xf:label>Biography:</xf:label>
-     <xf:group>
-     <table>
-     <tr>
-     <td>
-     <xf:input ref="first-name" incremental="true">
-       <xf:label>First Name:</xf:label>
-     </xf:input>
-     </td>
-     <td>
-     <xf:input ref="last-name" incremental="true">
-       <xf:label>Last Name:</xf:label>
-     </xf:input>
-     </td>
-     <td>
-     <xf:input ref="address1" incremental="true">
-       <xf:label>Address 1:</xf:label>
-     </xf:input>
-     </td>
-     <td>
-     <xf:input ref="address2" incremental="true">
-       <xf:label>Address 2:</xf:label>
-     </xf:input>
-     </td>
-     </tr>
-     <tr>
-     <td>
-     <xf:input ref="city" incremental="true">
-       <xf:label>City:</xf:label>
-     </xf:input>
-     </td>
-     <td>
-     <xf:input ref="state" incremental="true">
-       <xf:label>State:</xf:label>
-     </xf:input>
-     </td>
-     <td>
-     <xf:input ref="zip" incremental="true">
-       <xf:label>Zip Code:</xf:label>
-     </xf:input>
-     </td>
-     <td>
-     <xf:input ref="dob" incremental="true">
-       <xf:label>Date of Birth:</xf:label>
-     </xf:input>
-     </td>
-     </tr>
-     </table>
-     </xf:group>
-    </xf:group>
 
-    <xf:group ref="person/medical">
-        <xf:label>Medical:</xf:label>
-        <xf:group>
-        <xf:label>Vaccinations:</xf:label>
-        <xf:repeat nodeset="vaccinations/vaccination" id="vac-rpt">
-            <xf:group>
-                <xf:select1 ref="vac-target" selection="open">
-                      <xf:label>Target Illness:</xf:label>
-                      {local:illness-select()}
-                </xf:select1>
-                <xf:input ref="vac-date" incremental="true">
-                   <xf:label>Date:</xf:label>
-                </xf:input>
-            </xf:group>
-        </xf:repeat>
-        </xf:group>
-        <xf:group>
-            <xf:label>Illnesses:</xf:label>
-            <table>
+     <xf:label>Biography:</xf:label>
+
+     <table class="outer">
+         <tr>
+             <td>
+                <xf:label>First Name:</xf:label>
+                <xf:input ref="/data/person/biography/first-name" incremental="true" ></xf:input>
+             </td>
+             <td>
+                <xf:label>Last Name:</xf:label>
+                <xf:input ref="/data/person/biography/last-name" incremental="true"/>
+             </td>
+             <td>
+                <xf:label>Address 1:</xf:label>
+                <xf:input ref="/data/person/biography/address1" incremental="true"/>
+             </td>
+             <td>
+                <xf:label>Address 2:</xf:label>
+                <xf:input ref="/data/person/biography/address2" incremental="true"/>
+             </td>
+         </tr>
+         <tr>
+             <td>
+                <xf:label>City:</xf:label>
+                 <xf:input ref="/data/person/biography/city" incremental="true"/>
+             </td>
+             <td>
+                <xf:label>State:</xf:label>
+                 <xf:input ref="/data/person/biography/state" incremental="true"/>
+             </td>
+             <td>
+                <xf:label>Zip Code:</xf:label>
+                 <xf:input ref="/data/person/biography/zip" incremental="true"/>
+             </td>
+             <td>
+                <xf:label>Date of Birth:</xf:label>
+                <xf:input ref="/data/person/biography/dob" incremental="true"/>
+             </td>
+         </tr>
+     </table>
+
+    <xf:label>Medical:</xf:label>
+    <table style="border: solid 1px #ccc;">
+        <tr>
+        <td><xf:label>Vaccinations:</xf:label></td>
+        </tr>
+
+        <xf:repeat nodeset="/data/person/medical/vaccinations/vaccination" id="vac-rpt">
             <tr>
-            <xf:repeat nodeset="illness-reports/illness-report" id="illrpt-rpt">
                 <td>
-                <xf:group>                
-                <xf:select1 ref="illness-target" selection="open">
-                      <xf:label>Illness Name:</xf:label>
-                      {local:illness-select()}
-                </xf:select1>
-                <xf:input ref="illness-start-date" incremental="true">
-                   <xf:label>Start Date:</xf:label>
-                </xf:input>
-                <xf:input ref="illness-end-date" incremental="true">
-                   <xf:label>End Date:</xf:label>
-                </xf:input>
-                <xf:input ref="certainty" incremental="true">
-                   <xf:label>Certainty:</xf:label>
-                </xf:input>
-                
-                <xf:group>
-                    <xf:label>Symptoms:</xf:label>
-                    <xf:repeat nodeset="illness-symptoms/illness-symptom" id="illsym-rpt">
-                        <xf:input ref="." incremental="true" />
-                        <xf:trigger appearance="minimal">
+                    <xf:select1 ref="vac-target" selection="open">
+                          <xf:label>Target Illness:</xf:label>
+                          {local:illness-select()}
+                    </xf:select1>
+                </td>
+                <td>
+                    <xf:input ref="vac-date" incremental="true">
+                       <xf:label>Date:</xf:label>
+                    </xf:input>
+                </td>
+             </tr>
+        </xf:repeat>
+    </table>
+    <xf:label>Illnesses:</xf:label>
+    <table style="border: solid 1px #ccc;">            
+            <xf:repeat nodeset="/data/person/medical/illness-reports/illness-report" id="illrpt-rpt">
+                <tr>
+                    <td>           
+                        <xf:select1 ref="illness-target" selection="open">
+                              <xf:label>Illness Name:</xf:label>
+                              {local:illness-select()}
+                        </xf:select1>
+                    </td>
+                    <td>
+                        <xf:input ref="illness-start-date" incremental="true">
+                           <xf:label>Start Date:</xf:label>
+                        </xf:input>
+                    </td>
+                    <td>
+                        <xf:input ref="illness-end-date" incremental="true">
+                           <xf:label>End Date:</xf:label>
+                        </xf:input>
+                    </td>
+                    <td>
+                        <xf:input ref="certainty" incremental="true">
+                           <xf:label>Certainty:</xf:label>
+                        </xf:input>
+                    </td>
+                    <td>                    
+                        <xf:label>Symptoms:</xf:label>
+                        <table>
+                        <xf:repeat nodeset="/data/person/medical/illness-reports/illness-report/illness-symptoms/symptom" id="illsym-rpt">
+                            <tr>
+                                <td>
+                                     <xf:input ref="." incremental="true" />
+                                </td>
+                                <td>
+                                     <xf:trigger>
+                                          <xf:label>x</xf:label>
+                                          <xf:delete ev:event="DOMActivate" nodeset="." />
+                                     </xf:trigger>
+                                 </td>
+                             </tr>  
+                        </xf:repeat>
+                        </table>               
+                        <xf:trigger>
+                           <xf:label>Add Symptom</xf:label>
+                           <xf:insert nodeset="/data/person/medical/illness-reports/illness-report/illness-symptoms/symptom" position="after" at="count(illsym-rpt)" ev:event="DOMActivate"/>
+                         </xf:trigger>                        
+                    </td>
+                    <td>
+                        <div>Suggestions:</div>
+                        <ul>
+                           <xf:repeat nodeset="suggestions/suggestion">
+                                <li><xf:output ref="name/official-name" /></li>
+                           </xf:repeat>
+                        </ul> 
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                         <xf:trigger>
                               <xf:label>x</xf:label>
                               <xf:delete ev:event="DOMActivate" nodeset="." />
-                         </xf:trigger>  
-                    </xf:repeat>
-                    <xf:trigger>
-                       <xf:label>Add Symptom</xf:label>
-                       <xf:insert nodeset="instance('new-symptom')" position="after" at="count(illsym-rpt)" ev:event="DOMActivate"/>
-                     </xf:trigger>
-                </xf:group>
-                <xf:trigger>
-                      <xf:label>x</xf:label>
-                      <xf:delete ev:event="DOMActivate" nodeset="." />
-                 </xf:trigger>
-                 
-                 </xf:group>
-                 <div>Suggestions:</div>
-                <ul>
-                   <xf:repeat nodeset="suggestions/suggestion">
-                        <li><xf:output ref="name/official-name" /></li>
-                   </xf:repeat>
-                </ul> 
-                 </td>
-               </xf:repeat>
-               </tr>
-               </table>
-               <xf:trigger>
-                   <xf:label>Add Illness</xf:label>
-                   <xf:insert nodeset="illness-reports/illness-report" position="after" at="count(illrpt-rpt)" ev:event="DOMActivate"/>
-                 </xf:trigger>
-        </xf:group>        
-    </xf:group>  
+                         </xf:trigger>
+                    </td>
+                </tr>
+            </xf:repeat>
+    </table>
+    <div>
+         <xf:trigger>
+           <xf:label>Add Illness</xf:label>
+           <xf:insert nodeset="/data/person/medical/illness-reports/illness-report" position="after" at="count(illrpt-rpt)" origin="" ev:event="DOMActivate"/>
+         </xf:trigger>
+    </div>
    
-        <xf:textarea ref="person/medical/history"><xf:label>History:</xf:label></xf:textarea>
+    <xf:textarea ref="person/medical/history"><xf:label>History:</xf:label></xf:textarea>
 
     <br/>
     <xf:submit submission="cancel-form">
