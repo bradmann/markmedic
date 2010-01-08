@@ -117,6 +117,8 @@ return
             illview:searchIllness($illness-search-string)
         }
         
+        
+        <a href="/templates/illness-control.xqy"><img src="resources/images/plusbutton.gif" alt="Add an illness"/></a>
      </div>
   </div>
   <div id="rightcol">
