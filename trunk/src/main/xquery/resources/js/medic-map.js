@@ -69,7 +69,7 @@ function initializeLocal() {
     bounds = new google.maps.LatLngBounds();
     setMarkers(map, people);
     createMarker(map, localPoint);
-    var circle = new CircleOverlay(localPoint, 16.0, "#0000FF", 3, 1.0, "#0000FF", .3);
+    var circle = new CircleOverlay(localPoint, 16.0, "#FFFFFF", 3, 1.0, "#FFFFFF", .3);
     circle.initialize(map);
     circle.redraw();
     map.fitBounds(circle.bounds);
@@ -80,7 +80,7 @@ function initializeLocal() {
     if (count > 50) risk = "moderate";
     if (count > 150) risk = "high";
     
-    var colors = {"low": "#00FF00", "moderate": "#FFFF00", "high": "#FF0000"};
+    var colors = {"low": "#609C43", "moderate": "#FFCC00", "high": "#FF0000"};
     $("#risk_assessment").html(risk);
     $("#risk_assessment").css("background-color", colors[risk]);
 }
