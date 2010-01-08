@@ -11,7 +11,9 @@ let $uri := xdmp:get-request-field('uri')
 let $model :=
     <xf:model>
         <xf:instance src="/endpoints/illness-action.xqy?uri={$uri}" />
-        <xf:submission id="save-form" method="put" action="/endpoints/illness-action.xqy?uri={$uri}"/>
+        <xf:submission id="save-form" method="put" action="/endpoints/illness-action.xqy?uri={$uri}">
+        <xf:action ev:event="xforms-submit-done"><xf:load resource="/"/></xf:action>
+        </xf:submission>
         <xf:submission id="cancel-form" method="get" action="/"/>
     </xf:model>
 let $content :=

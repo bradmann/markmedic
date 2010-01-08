@@ -87,7 +87,7 @@ let $template :=
          </tr>
      </table>
 
-    <xf:label>Medical:</xf:label>
+    <xf:label>Medical:</xf:label>    
     <table style="border: solid 1px #ccc;">
         <tr>
         <td><xf:label>Vaccinations:</xf:label></td>
@@ -110,8 +110,9 @@ let $template :=
         </xf:repeat>
     </table>
     <xf:label>Illnesses:</xf:label>
+    <xf:group ref="/data/person/medical/illness-reports">
     <table style="border: solid 1px #ccc;">            
-            <xf:repeat nodeset="/data/person/medical/illness-reports/illness-report" id="illrpt-rpt">
+            <xf:repeat nodeset="illness-report" id="illrpt-rpt">
                 <tr>
                     <td>           
                         <xf:select1 ref="illness-target" selection="open">
@@ -136,8 +137,9 @@ let $template :=
                     </td>
                     <td>                    
                         <xf:label>Symptoms:</xf:label>
-                        <table>
-                        <xf:repeat nodeset="/data/person/medical/illness-reports/illness-report/illness-symptoms/symptom" id="illsym-rpt">
+                        <xf:group ref="illness-symptoms">
+                        <table>                        
+                        <xf:repeat nodeset="symptom" id="illsym-rpt">
                             <tr>
                                 <td>
                                      <xf:input ref="." incremental="true" />
@@ -153,8 +155,9 @@ let $template :=
                         </table>               
                         <xf:trigger>
                            <xf:label>Add Symptom</xf:label>
-                           <xf:insert nodeset="/data/person/medical/illness-reports/illness-report/illness-symptoms/symptom" position="after" at="count(illsym-rpt)" ev:event="DOMActivate"/>
-                         </xf:trigger>                        
+                           <xf:insert nodeset="symptom" position="after" at="count(illsym-rpt)" ev:event="DOMActivate"/>
+                         </xf:trigger>
+                         </xf:group>                        
                     </td>
                     <td>
                         <div>Suggestions:</div>
@@ -178,10 +181,10 @@ let $template :=
     <div>
          <xf:trigger>
            <xf:label>Add Illness</xf:label>
-           <xf:insert nodeset="/data/person/medical/illness-reports/illness-report" position="after" at="count(illrpt-rpt)" origin="" ev:event="DOMActivate"/>
+           <xf:insert nodeset="illness-report" position="after" at="count(illrpt-rpt)" origin="" ev:event="DOMActivate"/>
          </xf:trigger>
     </div>
-   
+    </xf:group>
     <xf:textarea ref="person/medical/history"><xf:label>History:</xf:label></xf:textarea>
 
     <br/>
