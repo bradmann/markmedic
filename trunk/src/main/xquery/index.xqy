@@ -133,9 +133,14 @@ return
   <br style="clear:both"/>
   
   <div id="map_canvas" style="width:540px; height:400px"></div>
-  </div>
-
+   <div  id="article_results"  style="width:540px">
+    {
+       illview:getRelatedArtices($illness-search-string)
+    }
+    </div>
   
+  
+  </div>
   <div id="footer"> </div>
 </div>
 </body>
