@@ -17,7 +17,6 @@ return
 
 declare function illview:searchIllness($searchString as xs:string?) as element(div)*{
 
-    let $log := xdmp:log(fn:concat("View: the search string is '",$searchString,"'")) 
 
     let $illnesses := illmod:search-illness($searchString)
     

@@ -13,7 +13,7 @@ declare function local:get-search-result-points($searchString as xs:string?) {(
                 xs:QName("illness-target"), 
                 $term)
                     )
-    let $_ := xdmp:log(xdmp:quote($query))
+    
     
     return
     
@@ -71,8 +71,7 @@ let $fields := local:manageRequestFields()
 let $log := xdmp:log($fields)
 let $illness-search-string := local:valueFromField($fields[name = 'illness-search-term'])
 
-let $log := xdmp:log(fn:concat("Controller: term is : '",$illness-search-string,"'"))
-let $log := xdmp:log(xdmp:describe($illness-search-string))
+
         
 
 
@@ -131,9 +130,12 @@ return
     </form>
   </div>
   <br style="clear:both"/>
+    
   
-  <div id="map_canvas" style="width:540px; height:400px"></div>
+  <div id="map_canvas" style="width:540px; height:350px"></div>
+  
    <div  id="article_results"  style="width:540px">
+    <h3>Relevant articles</h3>
     {
        illview:getRelatedArtices($illness-search-string)
     }

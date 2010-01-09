@@ -18,8 +18,7 @@ declare function illmod:query-from-string($searchString as xs:string?) as cts:qu
 
 declare function illmod:search-illness($searchString as xs:string?) as element(illness)* {
 
-    let $log := xdmp:log(fn:concat("Model: term is : '",$searchString,"'")) 
-    return
+
     
     if(fn:string-length(fn:normalize-space($searchString)) > 0) then
 

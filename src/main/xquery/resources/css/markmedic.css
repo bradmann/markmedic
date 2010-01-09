@@ -79,6 +79,10 @@ body {
 	float:right;
 }
 
+#article_results {
+	padding-top: 10px;	
+}
+
 #risk_assessment {
 	font-size: 14pt;
 	padding: 20px;
