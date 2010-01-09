@@ -1,5 +1,10 @@
 module namespace illmod = 'http://www.example.com/illness-model';
 
+import module namespace search =
+"http://marklogic.com/appservices/search"
+at "/MarkLogic/appservices/search/search.xqy";
+
+
 declare function illmod:query-from-string($searchString as xs:string?) as cts:query {
         let $terms := fn:tokenize(fn:normalize-space($searchString), " ")
         let $query := cts:and-query(
@@ -36,3 +41,53 @@ declare function illmod:search-illness($searchString as xs:string?) as element(i
 
 };
 
+declare function illmod:get-illness-names($searchString as xs:string?)  as xs:string*  {
+
+   
+
+     let  $illnesses := illmod:search-illness($searchString)//official-name/text()  
+    let $log := xdmp:log(fn:concat("###",fn:string-join(  $illnesses, " "))) 
+     return fn:string-join(  $illnesses, " ")
+        
+       
+     
+};
+
+declare function illmod:get-illness-articles($searchString as xs:string?)  as  element(div)*  {
+    let $str := fn:tokenize(fn:normalize-space(illmod:get-illness-names($searchString) ), ' ') 
+
+    
+    
+    let $results := search:search( "flu", 
+
+    
+    <options xmlns="http://marklogic.com/appservices/search">
+      <additional-query>{cts:collection-query("articles")}
+      </additional-query>
+    </options>
+    
+    )
+    
+    
+    
+    for $result in $results//search:result
+    let $uri:= $result/@uri
+    let $doc:= fn:doc($uri)
+    let $title:=$doc/Article/title/text()
+    let $url:=$doc/Article/url/text()
+    let $snippet :=$result/search:snippet/search:match
+    let $date := $doc/Article/date/text()
+    
+    
+    return
+    <div>
+      <div> Title:  <a href="{$url}">{$title} </a></div>
+      <div> Date: {$date} </div>
+      <div> Description: {$snippet//text()}  </div>
+      <hr/>
+     
+    </div>
+     
+       
+     
+};
