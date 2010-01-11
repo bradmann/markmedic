@@ -86,9 +86,11 @@ body {
 #risk_assessment {
 	font-size: 14pt;
 	padding: 20px;
-	margin: 10px;
+	margin: 0px;
 	text-align: center;
 	text-transform: uppercase;
+	color:#FFF;
+	width:175px;
 }
 
 span label {
@@ -159,5 +161,21 @@ td {
 }
 
 a {
-	color: #D22B37;
+	color: #324A65;
+	font-size:11px;
+}
+
+.article {
+	color:#333333;
+	font-size: 11px;	
+}
+
+.articletitle {
+	padding-top: 11px;
+	font-weight: bold;
+	padding-bottom: 1px;
+}
+
+.articledate {
+	padding-top: 2px;
 }
