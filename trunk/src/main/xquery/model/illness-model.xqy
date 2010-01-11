@@ -18,8 +18,6 @@ declare function illmod:query-from-string($searchString as xs:string?) as cts:qu
 
 declare function illmod:search-illness($searchString as xs:string?) as element(illness)* {
 
-
-    
     if(fn:string-length(fn:normalize-space($searchString)) > 0) then
 
         let $query := illmod:query-from-string($searchString)
@@ -30,14 +28,10 @@ declare function illmod:search-illness($searchString as xs:string?) as element(i
         
     else
         
-        
-        
         for $ill in xdmp:directory("/illnesses/")/illness
         order by $ill/names/official-name
         return
         $ill
-
-
 };
 
 declare function illmod:get-illness-names($searchString as xs:string?)  as xs:string*  {
@@ -57,17 +51,15 @@ declare function illmod:get-illness-articles($searchString as xs:string?)  as  e
 
     
     
-    let $results := search:search( "flu", 
+    let $results := search:search($searchString, 
 
     
     <options xmlns="http://marklogic.com/appservices/search">
       <additional-query>{cts:collection-query("articles")}
       </additional-query>
-    </options>
+    </options>, 1, 2)
     
-    )
-    
-    
+   
     
     for $result in $results//search:result
     let $uri:= $result/@uri
@@ -76,17 +68,13 @@ declare function illmod:get-illness-articles($searchString as xs:string?)  as  e
     let $url:=$doc/Article/url/text()
     let $snippet :=$result/search:snippet/search:match
     let $date := $doc/Article/date/text()
-    
+    let $summary := $doc/Article/summary/text()
     
     return
-    <div>
-      <div> Title:  <a href="{$url}">{$title} </a></div>
-      <div> Date: {$date} </div>
-      <div> Description: {$snippet//text()}  </div>
-      <hr/>
-     
-    </div>
-     
-       
-     
+    <div class="article">
+      <div class="articletitle">{$title}</div>
+      <div class="articlesnippet">{$summary}&nbsp;<a href="{$url}">more</a></div>
+      <div class="articledate">{$date}</div>
+    </div> 
+   
 };
