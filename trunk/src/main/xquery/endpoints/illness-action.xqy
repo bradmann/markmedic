@@ -13,7 +13,6 @@ declare function local:do-post($data as element()) as element() {
 
 declare function local:do-put($uri as xs:string, $data as element())  {
     let $new-uri := if ($uri) then $uri else fn:concat("/illnesses/", $data/names/official-name/text()[1])
-    let $new-uri := fn:concat("/illnesses/", $new-uri)
     let $_ := xdmp:document-insert($new-uri, $data)
     return    
     <data>{$data}</data>
