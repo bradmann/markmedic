@@ -135,10 +135,11 @@ return
   <div id="map_canvas" style="width:540px; height:350px"></div>
   
    <div  id="article_results"  style="width:540px">
-    <h3>Relevant articles</h3>
+    
     {
        illview:getRelatedArtices($illness-search-string)
     }
+    <p><a href="">More articles</a></p>
     </div>
   
   
