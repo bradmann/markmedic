@@ -45,7 +45,11 @@ declare function local:replace-illness-reports($person as element(person), $ill-
 };
 
 declare function local:do-get($uri as xs:string) as element() {
-    let $doc := if ($uri) then fn:doc($uri) else ()
+    let $doc := 
+        if ($uri) then 
+            let $orig-doc := fn:doc($uri)
+            return <person><uri>{$uri}</uri>{$orig-doc/person/node()}</person> 
+        else ()
     let $doc := if ($doc) then $doc else fn:doc("/empty-person.xml")
     return
         <data>{$doc}</data>
