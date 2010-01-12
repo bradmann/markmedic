@@ -62,7 +62,7 @@ declare function illmod:get-illness-articles($searchString as xs:string?, $start
     
    
     let $html := 
-    for $result in $results//search:result
+    for $result at $pos in $results//search:result
     let $uri:= $result/@uri
     let $doc:= fn:doc($uri)
     let $title:=$doc/Article/title/text()
@@ -73,7 +73,7 @@ declare function illmod:get-illness-articles($searchString as xs:string?, $start
     
     return
     <div class="article">
-      <div class="articletitle">{$title}</div>
+      <div class="articletitle">{$pos+$st - 1}.) {$title}</div>
       <div class="articlesnippet">{$summary}&nbsp;<a target="_new" href="{$url}">more</a></div>
       <div class="articledate">{$date}</div>
     </div> 
