@@ -93,6 +93,10 @@ return
         window.location.href="/";
     }
     
+    function openBrWindow(theURL,winName,features) { 
+        window.open(theURL,winName,features);
+    }
+    
 //-->
 </script>
 </head>
@@ -106,6 +110,7 @@ return
         <input name="illness-search-term" type="text" id="illness-search-term" size="30" value="{$illness-search-string}"/>
         <input type="submit" name="Submit" id="Submit" value="Search" />
         <input type="button" name="Clear" id="clear" value="X" onclick="clearAll()" />
+        &nbsp;
         
       </p>
     
@@ -123,11 +128,12 @@ return
   <div id="rightcol">
   
   <div id="right_buttons">
+    
     <form id="form2" name="form2" method="post" action="myrisk.xqy">
-        Zip :
+        Zip:
         <input name="my-zip" type="text" id="my-zip" size="5" />
         <input type="submit" name="Submit" id="Submit" value="Evaluate My Risk" />
-    </form>
+        </form>
   </div>
   <br style="clear:both"/>
     
@@ -140,6 +146,8 @@ return
        illview:getRelatedArtices($illness-search-string)
     }
     <p><a href="">More articles</a></p>
+    <p><a href="javascript:;" onclick="openBrWindow('credits.xqy','','width=225,height=200,top=250,left=500')"><img src="resources/images/easter.gif" width="10" height="10"/></a>
+ </p>
     </div>
   
   
