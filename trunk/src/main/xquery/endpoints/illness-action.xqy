@@ -19,7 +19,7 @@ declare function local:do-put($uri as xs:string, $data as element())  {
 };
 
 let $uri := xdmp:get-request-field("uri")
-let $LOG := xdmp:log(fn:concat("uri=", $uri))
+let $_ := xdmp:log(fn:concat("uri=", $uri))
 let $method := xdmp:get-request-method()
 let $request-body := xdmp:get-request-body()/data/illness
 return 
