@@ -68,12 +68,15 @@ declare function local:valueFromField($field as element(field)?) as xs:string {
 };
 
 let $fields := local:manageRequestFields()
-let $log := xdmp:log($fields)
+let $_ := xdmp:log($fields)
 let $illness-search-string := local:valueFromField($fields[name = 'illness-search-term'])
-
-
         
-
+let $start := $fields[name/text() eq 'start']/value
+let $count := $fields[name/text() eq 'count']/value
+let $start := if ($start) then $start else 1
+let $count := if ($count) then $count else 10
+let $_ := xdmp:log(text{('$start',$start)})
+let $_ := xdmp:log(text{('$count',$count)})
 
 return
 
@@ -105,7 +108,7 @@ return
 <div id="wrapper">
   <div id="header"><a href="/"><img src="resources/images/banner.gif" width="970" height="206" alt="MarkMedic banner" /></a></div>
   <div id="leftcol">
-    <form id="form1" name="form1" method="post" action="index.xqy">
+    <form id="form1" name="form1" method="get" action="index.xqy">
       <p>
         <input name="illness-search-term" type="text" id="illness-search-term" size="30" value="{$illness-search-string}"/>
         <input type="submit" name="Submit" id="Submit" value="Search" />
@@ -143,9 +146,9 @@ return
    <div  id="article_results"  style="width:540px">
     
     {
-       illview:getRelatedArtices($illness-search-string)
+       illview:getRelatedArtices($illness-search-string, $start, $count)
     }
-    <p><a href="">More articles</a></p>
+    
     <p><a href="javascript:;" onclick="openBrWindow('credits.xqy','','width=225,height=200,top=250,left=500')"><img src="resources/images/easter.gif" width="10" height="10"/></a>
  </p>
     </div>
