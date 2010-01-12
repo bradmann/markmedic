@@ -89,14 +89,17 @@ return
       <p>&nbsp;</p>
       
      </div>
-     <form id="form1" name="form1" method="post" action="index.xqy">
+     <form id="form1" name="form1" method="post" action="/templates/person-control.xqy">
+       <p><input type="submit" name="AddIncident" id="AddIncident" value="Add My Illness" /></p>
+    </form>
+    <form id="form1" name="form1" method="post" action="index.xqy">
        <p><input type="submit" name="Back" id="Back" value="Back to Main Page" /></p>
     </form>
   </div>
   <div id="rightcol">
     <div id="right_buttons">
       <form id="form2" name="form2" method="post" action="myrisk.xqy">
-        Zip :
+        Zip:
         <input name="my-zip" type="text" id="my-zip" size="5" value="{$my-zip}"/>
         <input type="submit" name="Submit" id="Submit" value="Evaluate My Risk" />
       </form>
