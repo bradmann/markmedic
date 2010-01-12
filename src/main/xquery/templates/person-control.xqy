@@ -35,10 +35,10 @@ let $model :=
       <xf:submission id="cancel-form" method="put" action="/"/>      
     </xf:model>
 let $template :=
-    <span>    
-    <div>
+    
+    <div class="formcontainer">
 
-    </div>
+
     <div>
         <xf:output ref="person/uri" incremental="true">
            <xf:label>URI:</xf:label>
@@ -193,5 +193,5 @@ let $template :=
      <xf:submit submission="save-form">
         <xf:label>Save</xf:label>
      </xf:submit>
-    </span>
+    </div>
 return tmpl:render("Person Detail", $model, $template, ())
