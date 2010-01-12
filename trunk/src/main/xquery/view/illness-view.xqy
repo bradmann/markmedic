@@ -55,10 +55,10 @@ declare function illview:searchIllness($searchString as xs:string?) as element(d
 
 };
 
-declare function illview:getRelatedArtices($searchString as xs:string?)  as element(div)* {
+declare function illview:getRelatedArtices($searchString as xs:string?, $start as xs:integer?, $count as xs:integer?)  as element()* {
 <div>
 {
-     illmod:get-illness-articles($searchString)
+     illmod:get-illness-articles($searchString, $start, $count)
 }
 
 </div>

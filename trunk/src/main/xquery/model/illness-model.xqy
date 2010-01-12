@@ -46,10 +46,11 @@ declare function illmod:get-illness-names($searchString as xs:string?)  as xs:st
      
 };
 
-declare function illmod:get-illness-articles($searchString as xs:string?)  as  element(div)*  {
+declare function illmod:get-illness-articles($searchString as xs:string?, $start as xs:integer?, $count as xs:integer?)  as  element()*  {
     let $str := fn:tokenize(fn:normalize-space(illmod:get-illness-names($searchString) ), ' ') 
 
-    
+    let $st := if ($start) then $start else 1
+    let $ct := if ($count) then $count else 10
     
     let $results := search:search($searchString, 
 
@@ -57,10 +58,10 @@ declare function illmod:get-illness-articles($searchString as xs:string?)  as  e
     <options xmlns="http://marklogic.com/appservices/search">
       <additional-query>{cts:collection-query("articles")}
       </additional-query>
-    </options>, 1, 2)
+    </options>, $st, $ct)
     
    
-    
+    let $html := 
     for $result in $results//search:result
     let $uri:= $result/@uri
     let $doc:= fn:doc($uri)
@@ -73,8 +74,17 @@ declare function illmod:get-illness-articles($searchString as xs:string?)  as  e
     return
     <div class="article">
       <div class="articletitle">{$title}</div>
-      <div class="articlesnippet">{$summary}&nbsp;<a href="{$url}">more</a></div>
+      <div class="articlesnippet">{$summary}&nbsp;<a target="_new" href="{$url}">more</a></div>
       <div class="articledate">{$date}</div>
     </div> 
+    
+    let $_ := xdmp:log(text{('$results', xdmp:quote($results))})
+    let $total := $results/@total
+    let $_ := xdmp:log(text{('$tot=', $total)})
+    let $more := if ($total > $st + $ct) then
+        <p><a href="/index.xqy?illness-search-term={$searchString}&amp;start={$st+$ct}&amp;count={$ct}">More articles</a></p>
+        else ()
+    return
+    ($html, $more)
    
 };
