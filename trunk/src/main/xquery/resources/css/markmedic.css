@@ -179,3 +179,14 @@ a {
 .articledate {
 	padding-top: 2px;
 }
+
+.formcontainer {
+
+}
+
+.credits {
+	background-color: #FFF;
+	text-align:left;
+	line-height: 2em;
+	padding-left: 20px;
+}
